@@ -1,0 +1,439 @@
+// Body Signature — backend data model.
+// Mirrors the ERD in BACKEND_PRD.md (zefaaf-body-signature repo), section 5.
+// Five domains: Identity & Access, Catalog, Commerce, Booking, Content & Messaging.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  customer
+  assistant
+  admin
+}
+
+enum OtpPurpose {
+  verify_email
+  reset_password
+}
+
+enum OrderStatus {
+  pending
+  confirmed
+  processing
+  shipped
+  delivered
+  cancelled
+}
+
+enum PaymentMethod {
+  cod
+  manual_transfer
+}
+
+enum BookingStatus {
+  pending
+  confirmed
+  rejected
+  rescheduled
+  cancelled
+}
+
+enum ContactStatus {
+  new
+  read
+  replied
+}
+
+enum Locale {
+  ar
+  en
+  nl
+}
+
+// ---------------------------------------------------------------------------
+// Identity & Access
+// ---------------------------------------------------------------------------
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String?
+  name          String?
+  phone         String?
+  avatarUrl     String?
+  role          UserRole @default(customer)
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  oauthAccounts      OAuthAccount[]
+  otpCodes           OtpCode[]
+  cart               Cart?
+  wishlist           Wishlist?
+  orders             Order[]
+  bookings           Booking[]
+  orderStatusChanges OrderStatusHistory[] @relation("StaffOrderStatusChanges")
+
+  @@map("users")
+}
+
+model OAuthAccount {
+  id                String   @id @default(cuid())
+  userId            String
+  provider          String
+  providerAccountId String
+  createdAt         DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+  @@map("oauth_accounts")
+}
+
+model OtpCode {
+  id        String     @id @default(cuid())
+  userId    String
+  code      String
+  purpose   OtpPurpose
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime   @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, purpose])
+  @@map("otp_codes")
+}
+
+// ---------------------------------------------------------------------------
+// Catalog
+// ---------------------------------------------------------------------------
+
+model Category {
+  id        String   @id @default(cuid())
+  parentId  String?
+  slug      String   @unique
+  imageUrl  String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  parent       Category?             @relation("CategoryToParent", fields: [parentId], references: [id], onDelete: SetNull)
+  children     Category[]            @relation("CategoryToParent")
+  translations CategoryTranslation[]
+  products     Product[]
+
+  @@map("categories")
+}
+
+model CategoryTranslation {
+  id          String  @id @default(cuid())
+  categoryId  String
+  locale      Locale
+  name        String
+  description String?
+
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, locale])
+  @@map("category_translations")
+}
+
+model Product {
+  id            String   @id @default(cuid())
+  categoryId    String
+  sku           String   @unique
+  price         Decimal  @db.Decimal(10, 2)
+  stockQuantity Int      @default(0)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  category      Category             @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  translations  ProductTranslation[]
+  images        ProductImage[]
+  variants      ProductVariant[]
+  cartItems     CartItem[]
+  wishlistItems WishlistItem[]
+  orderItems    OrderItem[]
+
+  @@index([categoryId])
+  @@map("products")
+}
+
+model ProductTranslation {
+  id          String  @id @default(cuid())
+  productId   String
+  locale      Locale
+  name        String
+  description String?
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, locale])
+  @@map("product_translations")
+}
+
+model ProductImage {
+  id        String @id @default(cuid())
+  productId String
+  url       String
+  sortOrder Int    @default(0)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId])
+  @@map("product_images")
+}
+
+model ProductVariant {
+  id            String  @id @default(cuid())
+  productId     String
+  attribute     String
+  value         String
+  priceModifier Decimal @default(0) @db.Decimal(10, 2)
+  stockQuantity Int     @default(0)
+
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+
+  @@index([productId])
+  @@map("product_variants")
+}
+
+// ---------------------------------------------------------------------------
+// Commerce
+// ---------------------------------------------------------------------------
+
+model Cart {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  updatedAt DateTime @updatedAt
+
+  user  User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items CartItem[]
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  cartId    String
+  productId String
+  variantId String?
+  quantity  Int     @default(1)
+
+  cart    Cart            @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  variant ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+
+  @@unique([cartId, productId, variantId])
+  @@map("cart_items")
+}
+
+model Wishlist {
+  id     String @id @default(cuid())
+  userId String @unique
+
+  user  User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items WishlistItem[]
+
+  @@map("wishlists")
+}
+
+model WishlistItem {
+  id         String @id @default(cuid())
+  wishlistId String
+  productId  String
+
+  wishlist Wishlist @relation(fields: [wishlistId], references: [id], onDelete: Cascade)
+  product  Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([wishlistId, productId])
+  @@map("wishlist_items")
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  userId          String
+  orderNumber     String        @unique
+  status          OrderStatus   @default(pending)
+  totalAmount     Decimal       @db.Decimal(10, 2)
+  shippingAddress String
+  phone           String
+  paymentMethod   PaymentMethod
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  user          User                 @relation(fields: [userId], references: [id], onDelete: Restrict)
+  items         OrderItem[]
+  statusHistory OrderStatusHistory[]
+
+  @@index([userId])
+  @@map("orders")
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  productId String
+  variantId String?
+  quantity  Int
+  unitPrice Decimal @db.Decimal(10, 2)
+  subtotal  Decimal @db.Decimal(10, 2)
+
+  order   Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product         @relation(fields: [productId], references: [id], onDelete: Restrict)
+  variant ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+
+  @@index([orderId])
+  @@map("order_items")
+}
+
+model OrderStatusHistory {
+  id              String      @id @default(cuid())
+  orderId         String
+  changedByUserId String?
+  status          OrderStatus
+  note            String?
+  createdAt       DateTime    @default(now())
+
+  order         Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  changedByUser User? @relation("StaffOrderStatusChanges", fields: [changedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([orderId])
+  @@map("order_status_history")
+}
+
+// ---------------------------------------------------------------------------
+// Booking
+// ---------------------------------------------------------------------------
+
+model Service {
+  id              String  @id @default(cuid())
+  slug            String  @unique
+  isBookable      Boolean @default(true)
+  durationMinutes Int     @default(30)
+
+  translations ServiceTranslation[]
+  bookings     Booking[]
+  slots        AvailabilitySlot[]
+
+  @@map("services")
+}
+
+model ServiceTranslation {
+  id          String  @id @default(cuid())
+  serviceId   String
+  locale      Locale
+  title       String
+  description String?
+
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceId, locale])
+  @@map("service_translations")
+}
+
+model AvailabilitySlot {
+  id          String   @id @default(cuid())
+  serviceId   String
+  date        DateTime @db.Date
+  startTime   DateTime @db.Time
+  endTime     DateTime @db.Time
+  isAvailable Boolean  @default(true)
+
+  service  Service   @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  bookings Booking[]
+
+  @@index([serviceId, date])
+  @@map("availability_slots")
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  userId      String
+  serviceId   String
+  slotId      String?
+  status      BookingStatus @default(pending)
+  adminNote   String?
+  requestedAt DateTime
+  createdAt   DateTime      @default(now())
+
+  user    User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  service Service           @relation(fields: [serviceId], references: [id], onDelete: Restrict)
+  slot    AvailabilitySlot? @relation(fields: [slotId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([serviceId])
+  @@map("bookings")
+}
+
+// ---------------------------------------------------------------------------
+// Content & Messaging
+// ---------------------------------------------------------------------------
+
+model Page {
+  id   String @id @default(cuid())
+  slug String @unique
+
+  translations PageTranslation[]
+
+  @@map("pages")
+}
+
+model PageTranslation {
+  id             String  @id @default(cuid())
+  pageId         String
+  locale         Locale
+  content        Json
+  seoTitle       String?
+  seoDescription String?
+
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@unique([pageId, locale])
+  @@map("page_translations")
+}
+
+model ContactSubmission {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  locale    Locale
+  status    ContactStatus @default(new)
+  createdAt DateTime      @default(now())
+
+  @@map("contact_submissions")
+}
+
+model EmailTemplate {
+  id  String @id @default(cuid())
+  key String @unique
+
+  translations EmailTemplateTranslation[]
+
+  @@map("email_templates")
+}
+
+model EmailTemplateTranslation {
+  id         String @id @default(cuid())
+  templateId String
+  locale     Locale
+  subject    String
+  bodyHtml   String
+
+  template EmailTemplate @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@unique([templateId, locale])
+  @@map("email_template_translations")
+}

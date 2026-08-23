@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Body Signature — Backend
 
-## Getting Started
+The API layer for the Body Signature platform: accounts, catalog, cart/wishlist,
+orders, booking, CMS, and contact-form handling. Consumed by the marketing site
+(`zefaaf-body-signature`) and the [dashboard](../zefaaf-body-signature-dashboard) app.
 
-First, run the development server:
+Full product spec: `BACKEND_PRD.md` in the `zefaaf-body-signature` repo (§5 has the ERD
+this schema implements).
+
+**Status: scaffold.** The data model, auth foundation, and a handful of simple
+resource routes are real and working. Most business-logic routes are not built
+yet — see [Planned API surface](#planned-api-surface) below.
+
+## Stack
+
+- Next.js (App Router) — used purely as an API server, no pages of its own
+- PostgreSQL + Prisma (`prisma/schema.prisma`)
+- Auth.js v5 (`lib/auth.ts`) — Credentials + Google, JWT sessions, no adapter
+  (our own `User`/`OAuthAccount`/`OtpCode` tables are the source of truth)
+- Resend + React Email (`lib/mail.ts`, `emails/*`) — one shared branded layout
+  for every transactional email
+- Zod for request validation
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env   # fill in DATABASE_URL at minimum
+npm install
+npx prisma migrate dev --name init
+npm run dev             # http://localhost:3001
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **No PrismaAdapter.** NextAuth's default adapter expects its own
+  `Account`/`Session`/`VerificationToken` shape. We model identity ourselves
+  (`User`, `OAuthAccount`, `OtpCode`) per the PRD, so account linking happens
+  by hand in `lib/auth.ts`'s `signIn` callback (not yet implemented — see below).
+- **Staff auth is a bearer token, not a shared cookie session.** The dashboard
+  runs on its own origin with its own NextAuth session, so there's no cookie
+  this app can read from it. `POST /api/staff-login` is a plain JSON endpoint
+  (not part of the NextAuth flow here) that verifies an admin/assistant and
+  returns a short-lived JWT (`lib/staff-token.ts`, signed with
+  `STAFF_JWT_SECRET`). The dashboard's Credentials provider calls it, stashes
+  the token in its own session, and attaches it as `Authorization: Bearer
+  <token>` on every request to this API. `lib/require-staff.ts` verifies that
+  header — it does not call `auth()`. Staff accounts have no self-signup;
+  only `role: admin | assistant` can get a token.
+- **The dashboard has no direct database access.** It talks to this API over
+  HTTP so Prisma/the schema only live in one place. Keep it that way — don't
+  add a second Prisma client to the dashboard repo.
+- **Cross-domain OAuth.** Google's redirect flow runs on whichever domain
+  hosts this app. Once the marketing site needs customer login, decide whether
+  it calls this API directly or this API's `/api/auth/*` pages are what
+  customers land on — not resolved yet.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Planned API surface
 
-## Learn More
+Everything below is scoped in `BACKEND_PRD.md` but not yet implemented — routes
+don't exist yet, this is a roadmap, not a list of stubs:
 
-To learn more about Next.js, take a look at the following resources:
+| Area | Endpoints | PRD section |
+|---|---|---|
+| Auth | `POST /api/auth/register`, `POST /api/auth/verify-otp`, `POST /api/auth/forgot-password`, `POST /api/auth/reset-password` | §4.1 |
+| Products | `GET/POST /api/products`, `GET/PATCH/DELETE /api/products/[id]`, variant + image sub-resources | §4.6 |
+| Cart | `GET /api/cart`, `POST /api/cart/items`, `PATCH/DELETE /api/cart/items/[id]` | §4.7 |
+| Wishlist | `GET /api/wishlist`, `POST/DELETE /api/wishlist/items/[productId]` | §4.7 |
+| Orders | `GET /api/orders`, `POST /api/orders` (from cart), `PATCH /api/orders/[id]/status` (staff) | §4.8 |
+| Bookings | `GET/POST /api/bookings`, `PATCH /api/bookings/[id]/status` (staff) | §4.5 |
+| Pages/CMS | `GET/PATCH /api/pages/[slug]` | §4.3 |
+| Team | `GET/POST/DELETE /api/staff` (admin-only) | §4.2 |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What's already real
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `prisma/schema.prisma` — all 25 entities from the ERD
+- `GET/POST /api/categories`, `GET/PATCH/DELETE /api/categories/[id]`
+- `GET/POST /api/services`
+- `POST /api/contact` (honeypot spam guard; email sending still TODO), `GET /api/contact` (staff)
+- `POST /api/staff-login` — returns a bearer token (`lib/staff-token.ts`), not a cookie
+- `lib/auth.ts` + `app/api/auth/[...nextauth]/route.ts` — Credentials + Google wired,
+  Google account linking still TODO
+- `emails/` — shared layout + OTP, order-status, booking-status, contact-ack templates
