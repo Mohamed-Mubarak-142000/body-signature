@@ -13,6 +13,7 @@ interface RevealImageProps {
   className?: string;
   sizes?: string;
   priority?: boolean;
+  objectPosition?: string;
 }
 
 export function RevealImage({
@@ -21,6 +22,7 @@ export function RevealImage({
   className,
   sizes = "(min-width: 1024px) 50vw, 100vw",
   priority = false,
+  objectPosition = "object-center",
 }: RevealImageProps) {
   // The reveal animation clips this element itself, so the IntersectionObserver
   // watches this plain, unclipped wrapper instead of the animated node below —
@@ -68,7 +70,7 @@ export function RevealImage({
             fill
             sizes={sizes}
             priority={priority}
-            className="object-cover"
+            className={cn("object-cover", objectPosition)}
           />
         </motion.div>
       </motion.div>

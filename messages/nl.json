@@ -31,7 +31,12 @@
   "about": {
     "eyebrow": "Over Body Signature",
     "title": "Ons verhaal, onze aanpak",
-    "intro": "Body Signature brengt medische expertise, kennis van kruiden, alternatieve therapieën en moderne schoonheid samen onder één rustig en doordacht dak. Wij geloven dat welzijn persoonlijk is — daarom begint onze aanpak met luisteren, niet met voorschrijven.",
+    "introPoints": [
+      "Body Signature brengt medische expertise, kennis van kruiden, alternatieve therapieën en moderne schoonheid samen onder één rustig en doordacht dak.",
+      "Wij geloven dat welzijn persoonlijk is — daarom begint onze aanpak met luisteren, niet met voorschrijven.",
+      "Elke stap, vanaf het eerste gesprek, verloopt in een rustig en aandachtig tempo.",
+      "We blijven betrokken naarmate uw behoeften veranderen — elk bezoek maakt deel uit van een doorlopende reis, geen eenmalig moment."
+    ],
     "pillarsTitle": "Wat ons leidt",
     "pillars": [
       {

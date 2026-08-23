@@ -31,7 +31,12 @@
   "about": {
     "eyebrow": "About Body Signature",
     "title": "Our story, our approach",
-    "intro": "Body Signature brings medical expertise, herbal knowledge, alternative therapies, and modern beauty together under one calm, considered roof. We believe wellbeing is personal — so our approach starts with listening, not prescribing.",
+    "introPoints": [
+      "Body Signature brings medical expertise, herbal knowledge, alternative therapies, and modern beauty together under one calm, considered roof.",
+      "We believe wellbeing is personal — so our approach starts with listening, not prescribing.",
+      "Every step, from the first conversation onward, moves at an unhurried, attentive pace.",
+      "We stay involved as your needs change, rather than treating any visit as a one-off."
+    ],
     "pillarsTitle": "What guides us",
     "pillars": [
       {

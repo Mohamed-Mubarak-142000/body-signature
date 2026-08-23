@@ -8,20 +8,35 @@ import { SectionHeader } from "@/components/sections/SectionHeader";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("about");
-  return { title: t("title"), description: t("intro") };
+  const introPoints = t.raw("introPoints") as string[];
+  return { title: t("title"), description: introPoints[0] };
 }
 
 export default async function AboutPage() {
   const t = await getTranslations("about");
   const home = await getTranslations("home");
   const alt = await getTranslations("imageAlt");
+  const introPoints = t.raw("introPoints") as string[];
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-6 py-20">
+      <section className="mx-auto max-w-6xl px-6 pt-10 pb-20">
         <SectionHeader eyebrow={t("eyebrow")} title={t("title")} />
         <div className="mt-10 grid gap-10 md:grid-cols-2 md:items-center">
-          <p className="text-lg text-muted-foreground">{t("intro")}</p>
+          <ul className="space-y-4">
+            {introPoints.map((point) => (
+              <li
+                key={point}
+                className="flex items-start gap-3 text-lg text-muted-foreground"
+              >
+                <span
+                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"
+                  aria-hidden="true"
+                />
+                {point}
+              </li>
+            ))}
+          </ul>
           <div className="grid grid-cols-2 gap-4">
             <RevealImage
               src="/images/about-1-v2.png"

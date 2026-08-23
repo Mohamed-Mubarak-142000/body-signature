@@ -17,7 +17,12 @@ export function CTASection({ title, body, buttonLabel }: CTASectionProps) {
         </h2>
         <p className="mx-auto mt-2 max-w-xl text-muted-foreground">{body}</p>
         <div className="mt-4">
-          <Button size="lg" nativeButton={false} render={<Link href="/contact" />}>
+          <Button
+            size="lg"
+            className="h-12 px-6 text-base"
+            nativeButton={false}
+            render={<Link href="/contact" />}
+          >
             {buttonLabel}
           </Button>
         </div>

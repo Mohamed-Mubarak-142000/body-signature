@@ -13,7 +13,7 @@ export default async function ServicesPage() {
   const t = await getTranslations("services");
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="mx-auto max-w-6xl px-6 pt-10 pb-20">
       <SectionHeader
         eyebrow={t("eyebrow")}
         title={t("title")}

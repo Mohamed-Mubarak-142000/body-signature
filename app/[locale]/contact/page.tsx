@@ -14,7 +14,7 @@ export default async function ContactPage() {
   const t = await getTranslations("contact");
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-20">
+    <section className="mx-auto max-w-5xl px-6 pt-10 pb-20">
       <SectionHeader
         eyebrow={t("eyebrow")}
         title={t("title")}

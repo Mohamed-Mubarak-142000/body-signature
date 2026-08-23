@@ -21,7 +21,9 @@ export async function HomeIntro() {
         <h2 className="mt-3 font-heading text-4xl text-foreground md:text-5xl">
           {t("introTitle")}
         </h2>
-        <p className="mt-5 text-lg text-muted-foreground">{t("introBody")}</p>
+        <p className="mt-5 text-base text-muted-foreground">
+          {t("introBody")}
+        </p>
       </Reveal>
     </section>
   );

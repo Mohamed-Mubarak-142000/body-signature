@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BadgeCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { RevealImage } from "@/components/effects/RevealImage";
@@ -22,8 +23,9 @@ export function Hero() {
         >
           <motion.p
             variants={fadeUp}
-            className="text-sm font-medium uppercase tracking-[0.2em] text-gold-600"
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-transparent bg-primary/25 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary"
           >
+            <BadgeCheck className="size-4.5" fill="currentColor" stroke="#f8e9d4" />
             {t("eyebrow")}
           </motion.p>
           <motion.h1
