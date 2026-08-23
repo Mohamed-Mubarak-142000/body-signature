@@ -7,8 +7,14 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // DATABASE_URL is the pgbouncer transaction-mode pooler (port 6543) —
+  // required for serverless/Next.js API routes, which open one connection
+  // per invocation and would exhaust Postgres's connection limit otherwise.
+  // DIRECT_URL bypasses the pooler for schema changes (migrate/introspect),
+  // which pgbouncer's transaction mode can't run reliably.
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum UserRole {

@@ -23,15 +23,27 @@ yet — see [Planned API surface](#planned-api-surface) below.
 
 ## Getting started
 
+Database is Supabase Postgres (project ref `etoshkfpvpndorjbdtns`) — Supabase
+is used as a plain Postgres host + file storage here, not for auth; see
+[Architecture notes](#architecture-notes).
+
 ```bash
-cp .env.example .env   # fill in DATABASE_URL at minimum
+cp .env.example .env   # fill in [YOUR-PASSWORD] from Supabase → Project Settings → Database
 npm install
-npx prisma migrate dev --name init
-npm run dev             # http://localhost:3001
+npx prisma migrate dev --name init   # runs against DIRECT_URL
+npm run dev                          # http://localhost:3001, runs against DATABASE_URL (pooled)
 ```
+
+A Supabase MCP server is configured in `.mcp.json` (project-scoped) for
+DB/debugging work from inside Claude Code — run `claude /mcp` once to
+authenticate it.
 
 ## Architecture notes
 
+- **Supabase is a Postgres host, not an auth provider.** We connect to it
+  purely through Prisma/`DATABASE_URL`. Don't add `@supabase/ssr` or
+  `@supabase/supabase-js`-based auth here — sign-in stays on Auth.js
+  (customers) and the bearer-token flow (staff), both described below.
 - **No PrismaAdapter.** NextAuth's default adapter expects its own
   `Account`/`Session`/`VerificationToken` shape. We model identity ourselves
   (`User`, `OAuthAccount`, `OtpCode`) per the PRD, so account linking happens
