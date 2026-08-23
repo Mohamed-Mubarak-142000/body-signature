@@ -4,6 +4,9 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { requireStaff } from "@/lib/require-staff";
 import { badRequest, forbidden } from "@/lib/http";
+import { sendMailSafe } from "@/lib/mail";
+import { ContactAcknowledgementEmail } from "@/emails/contact-acknowledgement";
+import { ContactNotifyStaffEmail } from "@/emails/contact-notify-staff";
 
 const submitSchema = z.object({
   name: z.string().min(1),
@@ -26,11 +29,25 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true }, { status: 201 });
   }
 
-  // TODO(contact feature): rate-limit by IP/email, then send the staff
-  // notification + visitor acknowledgement via lib/mail.ts once the
-  // email templates are wired up — see BACKEND_PRD.md §4.4 and §4.9.
+  // TODO(contact feature): rate-limit by IP/email — see BACKEND_PRD.md §4.4.
   const { website: _honeypot, ...data } = parsed.data;
   const submission = await prisma.contactSubmission.create({ data });
+
+  await sendMailSafe(
+    data.email,
+    "We've received your message",
+    ContactAcknowledgementEmail({ name: data.name }),
+    `contact-ack to ${data.email}`,
+  );
+
+  if (process.env.CONTACT_NOTIFY_EMAIL) {
+    await sendMailSafe(
+      process.env.CONTACT_NOTIFY_EMAIL,
+      `New enquiry from ${data.name}`,
+      ContactNotifyStaffEmail(data),
+      `contact-notify-staff about ${data.email}`,
+    );
+  }
 
   return NextResponse.json({ id: submission.id }, { status: 201 });
 }

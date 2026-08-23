@@ -23,3 +23,23 @@ export async function sendMail(to: string, subject: string, template: ReactEleme
     html,
   });
 }
+
+/**
+ * Best-effort send for notifications that must never block the request that
+ * triggered them (OTP codes, order/booking status updates, contact-form
+ * replies). Without RESEND_API_KEY configured — the default until someone
+ * sets one up — this logs instead of throwing, so registration/checkout/etc.
+ * stay fully testable in local dev with no email provider at all.
+ */
+export async function sendMailSafe(to: string, subject: string, template: ReactElement, devLabel: string) {
+  if (!process.env.RESEND_API_KEY) {
+    console.log(`[DEV EMAIL] ${devLabel} → ${to}: ${subject}`);
+    return;
+  }
+  try {
+    await sendMail(to, subject, template);
+  } catch (error) {
+    console.error(`Failed to send "${subject}" to ${to}:`, error);
+    console.log(`[DEV EMAIL fallback] ${devLabel} → ${to}: ${subject}`);
+  }
+}

@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 import { prisma } from "@/lib/prisma";
 import { badRequest, unauthorized } from "@/lib/http";
-import { signStaffToken } from "@/lib/staff-token";
+import { signAuthToken } from "@/lib/auth-token";
 
 // Called by the dashboard app's own Credentials provider (not by NextAuth
 // here) — staff accounts have no self-signup, so this only ever verifies,
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
   const isValid = await bcrypt.compare(password, user.passwordHash);
   if (!isValid) return unauthorized("Invalid credentials");
 
-  const token = await signStaffToken({ sub: user.id, email: user.email, role: user.role });
+  const token = await signAuthToken({ sub: user.id, email: user.email, role: user.role }, "8h");
 
   return NextResponse.json({
     token,

@@ -1,13 +1,11 @@
 import type { NextRequest } from "next/server";
 
-import { verifyStaffToken, type StaffTokenPayload } from "@/lib/staff-token";
+import { verifyAuthToken, type AuthTokenPayload } from "@/lib/auth-token";
 
 /**
- * Guard for dashboard-facing routes. Reads the bearer token the dashboard
- * attaches to every request (see lib/staff-token.ts for why this isn't a
- * cookie session). Returns the staff payload, or null when the caller isn't
- * an authenticated admin/assistant — callers should respond with
- * `forbidden()` from lib/http.ts.
+ * Guard for dashboard-facing routes. Returns the staff payload, or null when
+ * the caller isn't an authenticated admin/assistant — callers should
+ * respond with `forbidden()` from lib/http.ts.
  *
  * Role split: BACKEND_PRD.md §4.2 — admin gets everything an assistant does
  * plus staff/settings management; there's no third dashboard role.
@@ -15,13 +13,14 @@ import { verifyStaffToken, type StaffTokenPayload } from "@/lib/staff-token";
 export async function requireStaff(
   req: NextRequest,
   minRole: "assistant" | "admin" = "assistant",
-): Promise<StaffTokenPayload | null> {
+): Promise<AuthTokenPayload | null> {
   const authHeader = req.headers.get("authorization");
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
   if (!token) return null;
 
-  const staff = await verifyStaffToken(token);
+  const staff = await verifyAuthToken(token);
   if (!staff) return null;
+  if (staff.role !== "admin" && staff.role !== "assistant") return null;
   if (minRole === "admin" && staff.role !== "admin") return null;
   return staff;
 }

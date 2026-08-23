@@ -4,6 +4,8 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { requireStaff } from "@/lib/require-staff";
 import { badRequest, forbidden } from "@/lib/http";
+import { sendMailSafe } from "@/lib/mail";
+import { OrderStatusEmail } from "@/emails/order-status";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -28,8 +30,7 @@ export async function GET(_req: NextRequest, { params }: RouteParams) {
 
 // Advances the order lifecycle (BACKEND_PRD.md §4.8: pending → confirmed →
 // processing → shipped → delivered, or → cancelled). Records who changed it
-// and appends to the history — email notification is still TODO (needs
-// RESEND_API_KEY configured, see lib/mail.ts).
+// and appends to the history.
 export async function PATCH(req: NextRequest, { params }: RouteParams) {
   const staff = await requireStaff(req, "assistant");
   if (!staff) return forbidden();
@@ -43,7 +44,7 @@ export async function PATCH(req: NextRequest, { params }: RouteParams) {
     const updated = await tx.order.update({
       where: { id },
       data: { status: parsed.data.status },
-      include: { items: true, statusHistory: true },
+      include: { items: true, statusHistory: true, user: true },
     });
     await tx.orderStatusHistory.create({
       data: {
@@ -55,6 +56,13 @@ export async function PATCH(req: NextRequest, { params }: RouteParams) {
     });
     return updated;
   });
+
+  await sendMailSafe(
+    order.user.email,
+    `Order ${order.orderNumber} update`,
+    OrderStatusEmail({ orderNumber: order.orderNumber, status: order.status }),
+    `order-status ${order.status} for order ${order.orderNumber}`,
+  );
 
   return NextResponse.json(order);
 }

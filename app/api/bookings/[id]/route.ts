@@ -4,6 +4,8 @@ import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { requireStaff } from "@/lib/require-staff";
 import { badRequest, forbidden } from "@/lib/http";
+import { sendMailSafe } from "@/lib/mail";
+import { BookingStatusEmail } from "@/emails/booking-status";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -13,8 +15,7 @@ const updateStatusSchema = z.object({
 });
 
 // Approve/reject a booking request — BACKEND_PRD.md §4.5 requires manual
-// admin/assistant review, never auto-confirm. Email notification is still
-// TODO (needs RESEND_API_KEY configured, see lib/mail.ts).
+// admin/assistant review, never auto-confirm.
 export async function PATCH(req: NextRequest, { params }: RouteParams) {
   const staff = await requireStaff(req, "assistant");
   if (!staff) return forbidden();
@@ -29,6 +30,16 @@ export async function PATCH(req: NextRequest, { params }: RouteParams) {
     data: parsed.data,
     include: { service: { include: { translations: true } }, user: true },
   });
+
+  const serviceName =
+    booking.service.translations.find((t) => t.locale === "en")?.title ?? booking.service.slug;
+
+  await sendMailSafe(
+    booking.user.email,
+    `Your booking: ${serviceName}`,
+    BookingStatusEmail({ serviceName, status: booking.status }),
+    `booking-status ${booking.status} for ${booking.user.email}`,
+  );
 
   return NextResponse.json(booking);
 }
