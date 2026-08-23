@@ -89,12 +89,12 @@ export function Header() {
             <SheetContent
               side="right"
               showCloseButton={false}
-              className="w-full border-none bg-[#1c1712] p-0 sm:max-w-sm"
+              className="w-full border-none bg-background p-0 sm:max-w-sm"
             >
               <SheetTitle className="sr-only">{t("menu")}</SheetTitle>
               <div className="flex h-full flex-col px-8 py-8">
                 <div className="flex items-center justify-between">
-                  <span className="font-heading text-xl text-gold-300">
+                  <span className="font-heading text-xl text-primary">
                     {brand("name")}
                   </span>
                   <SheetClose
@@ -102,7 +102,7 @@ export function Header() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="text-[#f3ecdf] hover:bg-white/10 hover:text-[#f3ecdf]"
+                        className="text-foreground hover:bg-muted"
                         aria-label={t("menu")}
                       />
                     }
@@ -119,7 +119,7 @@ export function Header() {
                       render={
                         <Link
                           href={link.href}
-                          className="text-lg font-medium text-[#f3ecdf]/90 transition-colors hover:text-gold-300"
+                          className="text-lg font-medium text-foreground transition-colors hover:text-primary"
                         />
                       }
                     >
@@ -128,7 +128,7 @@ export function Header() {
                   ))}
                 </nav>
 
-                <LanguageSwitcher className="mt-auto border-white/15 text-[#f3ecdf] hover:bg-white/10" />
+                <LanguageSwitcher className="mt-auto" />
               </div>
             </SheetContent>
           </Sheet>
