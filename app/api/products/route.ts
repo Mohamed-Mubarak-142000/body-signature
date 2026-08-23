@@ -21,6 +21,7 @@ const variantSchema = z.object({
 const createProductSchema = z.object({
   categoryId: z.string().min(1),
   sku: z.string().min(1),
+  slug: z.string().min(1),
   price: z.number().nonnegative(),
   stockQuantity: z.number().int().nonnegative().default(0),
   isActive: z.boolean().default(true),
@@ -29,8 +30,13 @@ const createProductSchema = z.object({
   variants: z.array(variantSchema).default([]),
 });
 
-export async function GET() {
+// Public callers (the storefront) only ever see active products; a staff
+// bearer token (the dashboard) sees everything, including inactive ones.
+export async function GET(req: NextRequest) {
+  const staff = await requireStaff(req, "assistant");
+
   const products = await prisma.product.findMany({
+    where: staff ? {} : { isActive: true },
     include: { translations: true, images: true, variants: true, category: true },
     orderBy: { createdAt: "desc" },
   });

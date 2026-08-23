@@ -23,6 +23,7 @@ const variantSchema = z.object({
 const updateProductSchema = z.object({
   categoryId: z.string().min(1).optional(),
   sku: z.string().min(1).optional(),
+  slug: z.string().min(1).optional(),
   price: z.number().nonnegative().optional(),
   stockQuantity: z.number().int().nonnegative().optional(),
   isActive: z.boolean().optional(),

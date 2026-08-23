@@ -79,9 +79,11 @@ testable without a real email provider.
 ## API surface
 
 **Public (no auth):**
-`GET /api/categories`, `GET /api/products`, `GET /api/products/[id]`,
-`GET /api/services`, `GET /api/pages`, `GET /api/pages/[slug]`,
-`POST /api/contact`
+`GET /api/categories`, `GET /api/products` (active products only for public
+callers; a staff bearer token also gets inactive ones — same endpoint,
+behavior branches on the caller), `GET /api/products/slug/[slug]` (what the
+storefront's product page uses), `GET /api/services`, `GET /api/pages`,
+`GET /api/pages/[slug]`, `POST /api/contact`
 
 **Customer auth (`lib/require-customer.ts`):**
 `POST /api/auth/register` → `POST /api/auth/verify-otp` (returns a token) →

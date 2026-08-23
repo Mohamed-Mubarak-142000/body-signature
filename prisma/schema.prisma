@@ -155,6 +155,7 @@ model Product {
   id            String   @id @default(cuid())
   categoryId    String
   sku           String   @unique
+  slug          String   @unique
   price         Decimal  @db.Decimal(10, 2)
   stockQuantity Int      @default(0)
   isActive      Boolean  @default(true)
