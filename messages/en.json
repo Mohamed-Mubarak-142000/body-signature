@@ -1,0 +1,154 @@
+{
+  "brand": {
+    "name": "Body Signature",
+    "tagline": "Your wellness, refined."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "menu": "Menu"
+  },
+  "hero": {
+    "eyebrow": "Body Signature",
+    "title": "A signature approach to health, beauty & balance",
+    "subtitle": "We bring together medical care, herbal and alternative therapies, and modern beauty in one considered, personal experience.",
+    "ctaPrimary": "Explore our services",
+    "ctaSecondary": "Get in touch"
+  },
+  "home": {
+    "introEyebrow": "Welcome",
+    "introTitle": "Care that feels considered, not clinical",
+    "introBody": "Body Signature was created around a simple idea: that health, beauty, and wellbeing are personal, and deserve to be treated with care, patience, and craft. Every service is guided by attentive consultation and a calm, respectful environment.",
+    "servicesEyebrow": "What we offer",
+    "servicesTitle": "Five ways we care for you",
+    "servicesSubtitle": "From medical guidance to beauty rituals, each category is built around a distinct expertise.",
+    "ctaTitle": "Ready to begin your journey?",
+    "ctaBody": "Tell us a little about what you're looking for, and we'll help you find the right path.",
+    "ctaButton": "Contact us"
+  },
+  "about": {
+    "eyebrow": "About Body Signature",
+    "title": "Our story, our approach",
+    "intro": "Body Signature brings medical expertise, herbal knowledge, alternative therapies, and modern beauty together under one calm, considered roof. We believe wellbeing is personal — so our approach starts with listening, not prescribing.",
+    "pillarsTitle": "What guides us",
+    "pillars": [
+      {
+        "title": "Personal, not generic",
+        "body": "Every visit begins with a real conversation about your goals, so recommendations are tailored to you, not a one-size-fits-all routine."
+      },
+      {
+        "title": "Considered environment",
+        "body": "From the first consultation to aftercare, the space and pace are designed to feel calm, private, and unhurried."
+      },
+      {
+        "title": "Breadth of expertise",
+        "body": "Medical, herbal, alternative, and beauty specialties sit side by side, so your care can draw on more than one discipline."
+      }
+    ],
+    "imageCaption": "Inside the Body Signature experience"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Care built around you",
+    "subtitle": "Five specialties, one considered standard of care. Choose a category to learn more.",
+    "learnMore": "Learn more",
+    "backToServices": "Back to all services",
+    "detailCtaTitle": "Interested in this service?",
+    "detailCtaBody": "Reach out and we'll help you understand whether it's the right fit for you.",
+    "detailCtaButton": "Contact us",
+    "featuresTitle": "What to expect",
+    "categories": {
+      "medical-healthcare": {
+        "title": "Medical & Healthcare",
+        "summary": "Attentive, professional medical guidance for everyday health.",
+        "description": "Our medical and healthcare services are grounded in careful consultation and a respectful, professional environment. We take the time to understand your health goals before recommending a path forward, and we stay involved as your needs evolve.",
+        "features": [
+          "In-depth initial consultation",
+          "Personalized care recommendations",
+          "Ongoing, attentive follow-up"
+        ]
+      },
+      "herbal-medicine": {
+        "title": "Herbal Medicine",
+        "summary": "Time-honored botanical remedies, thoughtfully applied.",
+        "description": "Herbal medicine draws on a long tradition of botanical care. Our approach pairs that knowledge with careful listening, so any recommendation reflects your individual constitution and needs rather than a generic formula.",
+        "features": [
+          "Consultation on herbal traditions and options",
+          "Quality-focused sourcing philosophy",
+          "Guidance on integrating herbal care into daily life"
+        ]
+      },
+      "alternative-medicine": {
+        "title": "Alternative Medicine",
+        "summary": "Complementary therapies for balance and wellbeing.",
+        "description": "Our alternative medicine offering explores complementary approaches to wellbeing, always in an open conversation about what you're hoping to achieve. We favor a measured, honest approach over bold promises.",
+        "features": [
+          "Open discussion of complementary approaches",
+          "Calm, unhurried treatment environment",
+          "Care coordinated around your broader wellbeing"
+        ]
+      },
+      "beauty": {
+        "title": "Beauty for Women & Men",
+        "summary": "Modern beauty rituals for every client.",
+        "description": "Our beauty services are designed for women and men alike, blending contemporary technique with an unhurried, personal touch. Every treatment begins with a conversation about what you'd like to feel and see.",
+        "features": [
+          "Treatments tailored to skin, style, and goals",
+          "A calm, private studio environment",
+          "Guidance on at-home care between visits"
+        ]
+      },
+      "training-courses": {
+        "title": "Training Courses",
+        "summary": "Professional training for practitioners and enthusiasts.",
+        "description": "Our training courses share practical, professional knowledge across our specialties. Whether you're building a career or deepening your own practice, sessions are structured, hands-on, and led by experienced practitioners.",
+        "features": [
+          "Structured, practical curriculum",
+          "Small-group, hands-on sessions",
+          "Guidance suited to your experience level"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's start a conversation",
+    "subtitle": "Reach out with any questions, or to learn which service is right for you.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "message": "Message",
+      "messagePlaceholder": "Tell us a little about what you're looking for...",
+      "submit": "Send message",
+      "note": "This form is for enquiries only; we do not process bookings or payments online."
+    },
+    "infoTitle": "Contact details",
+    "addressTitle": "Address",
+    "address": "[Business Address]",
+    "phoneTitle": "Phone",
+    "phoneValue": "[Phone Number]",
+    "emailTitle": "Email",
+    "email": "[Email Address]",
+    "hoursTitle": "Business hours",
+    "hours": "[Business Hours]"
+  },
+  "footer": {
+    "tagline": "Health, beauty, and balance — with a personal signature.",
+    "quickLinks": "Quick links",
+    "servicesLinks": "Services",
+    "rights": "All rights reserved."
+  },
+  "imageAlt": {
+    "hero": "Warm, softly lit editorial portrait representing the Body Signature brand",
+    "about1": "Calm, softly lit interior representing the Body Signature client experience",
+    "about2": "Warm-toned detail shot representing personal, attentive care",
+    "medicalHealthcare": "Warm, professional editorial image representing medical and healthcare services",
+    "herbalMedicine": "Botanical still life in warm gold tones representing herbal medicine",
+    "alternativeMedicine": "Calm natural still life representing alternative medicine and balance",
+    "beauty": "Editorial beauty portrait in warm gold tones representing beauty services for women and men",
+    "trainingCourses": "Professional training setting in warm editorial lighting"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "brand": {
+    "name": "Body Signature",
+    "tagline": "Jouw welzijn, verfijnd."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Over ons",
+    "services": "Diensten",
+    "contact": "Contact",
+    "menu": "Menu"
+  },
+  "hero": {
+    "eyebrow": "Body Signature",
+    "title": "Een eigen signatuur voor gezondheid, schoonheid & balans",
+    "subtitle": "Wij combineren medische zorg, kruiden- en alternatieve therapieën en moderne schoonheid in één doordachte, persoonlijke ervaring.",
+    "ctaPrimary": "Bekijk onze diensten",
+    "ctaSecondary": "Neem contact op"
+  },
+  "home": {
+    "introEyebrow": "Welkom",
+    "introTitle": "Zorg die doordacht aanvoelt, niet klinisch",
+    "introBody": "Body Signature is ontstaan vanuit een eenvoudig idee: gezondheid, schoonheid en welzijn zijn persoonlijk en verdienen zorgvuldigheid, geduld en vakmanschap. Elke dienst begint met een aandachtig gesprek, in een rustige en respectvolle omgeving.",
+    "servicesEyebrow": "Wat wij bieden",
+    "servicesTitle": "Vijf manieren waarop wij voor u zorgen",
+    "servicesSubtitle": "Van medisch advies tot schoonheidsrituelen, elke categorie is opgebouwd rond een eigen expertise.",
+    "ctaTitle": "Klaar om te beginnen?",
+    "ctaBody": "Vertel ons kort waar u naar op zoek bent, en wij helpen u de juiste weg te vinden.",
+    "ctaButton": "Neem contact op"
+  },
+  "about": {
+    "eyebrow": "Over Body Signature",
+    "title": "Ons verhaal, onze aanpak",
+    "intro": "Body Signature brengt medische expertise, kennis van kruiden, alternatieve therapieën en moderne schoonheid samen onder één rustig en doordacht dak. Wij geloven dat welzijn persoonlijk is — daarom begint onze aanpak met luisteren, niet met voorschrijven.",
+    "pillarsTitle": "Wat ons leidt",
+    "pillars": [
+      {
+        "title": "Persoonlijk, niet generiek",
+        "body": "Elk bezoek begint met een echt gesprek over uw doelen, zodat adviezen op maat zijn en geen standaardroutine."
+      },
+      {
+        "title": "Doordachte omgeving",
+        "body": "Van het eerste consult tot de nazorg: de ruimte en het tempo zijn ontworpen om rustig, privé en ontspannen te voelen."
+      },
+      {
+        "title": "Brede expertise",
+        "body": "Medische, kruiden-, alternatieve en schoonheidsspecialismen staan naast elkaar, zodat uw zorg op meer dan één discipline kan steunen."
+      }
+    ],
+    "imageCaption": "Een kijkje in de Body Signature-ervaring"
+  },
+  "services": {
+    "eyebrow": "Diensten",
+    "title": "Zorg op maat",
+    "subtitle": "Vijf specialismen, één doordachte zorgstandaard. Kies een categorie voor meer informatie.",
+    "learnMore": "Meer informatie",
+    "backToServices": "Terug naar alle diensten",
+    "detailCtaTitle": "Geïnteresseerd in deze dienst?",
+    "detailCtaBody": "Neem contact op en wij helpen u te bepalen of dit bij u past.",
+    "detailCtaButton": "Neem contact op",
+    "featuresTitle": "Wat u kunt verwachten",
+    "categories": {
+      "medical-healthcare": {
+        "title": "Medisch & Gezondheidszorg",
+        "summary": "Aandachtig, professioneel medisch advies voor uw dagelijkse gezondheid.",
+        "description": "Onze medische en gezondheidszorgdiensten zijn gebaseerd op zorgvuldig overleg en een professionele, respectvolle omgeving. Wij nemen de tijd om uw gezondheidsdoelen te begrijpen voordat we een weg voorstellen, en blijven betrokken naarmate uw behoeften veranderen.",
+        "features": [
+          "Uitgebreid eerste consult",
+          "Persoonlijke zorgadviezen",
+          "Doorlopende, aandachtige opvolging"
+        ]
+      },
+      "herbal-medicine": {
+        "title": "Kruidengeneeskunde",
+        "summary": "Eeuwenoude plantaardige remedies, zorgvuldig toegepast.",
+        "description": "Kruidengeneeskunde bouwt voort op een lange traditie van plantaardige zorg. Onze aanpak combineert die kennis met aandachtig luisteren, zodat elk advies aansluit bij uw individuele gestel en behoeften in plaats van een algemene formule.",
+        "features": [
+          "Advies over kruidentradities en -opties",
+          "Filosofie gericht op kwaliteit van herkomst",
+          "Begeleiding bij het integreren van kruidenzorg in het dagelijks leven"
+        ]
+      },
+      "alternative-medicine": {
+        "title": "Alternatieve Geneeskunde",
+        "summary": "Complementaire therapieën voor balans en welzijn.",
+        "description": "Ons aanbod in alternatieve geneeskunde verkent complementaire benaderingen van welzijn, altijd in open overleg over wat u hoopt te bereiken. Wij kiezen voor een evenwichtige, eerlijke aanpak boven grote beloftes.",
+        "features": [
+          "Open gesprek over complementaire benaderingen",
+          "Rustige, ontspannen behandelomgeving",
+          "Zorg afgestemd op uw bredere welzijn"
+        ]
+      },
+      "beauty": {
+        "title": "Schoonheid voor Vrouwen & Mannen",
+        "summary": "Moderne schoonheidsrituelen voor iedere cliënt.",
+        "description": "Onze schoonheidsdiensten zijn ontworpen voor zowel vrouwen als mannen, met een mix van hedendaagse technieken en een persoonlijke, ontspannen aanpak. Elke behandeling begint met een gesprek over hoe u zich wilt voelen en eruit wilt zien.",
+        "features": [
+          "Behandelingen afgestemd op huid, stijl en doelen",
+          "Een rustige, privé studio-omgeving",
+          "Advies voor verzorging thuis tussen bezoeken door"
+        ]
+      },
+      "training-courses": {
+        "title": "Trainingen & Cursussen",
+        "summary": "Professionele training voor vakmensen en enthousiastelingen.",
+        "description": "Onze trainingen delen praktische, professionele kennis over al onze specialismen. Of u nu een carrière opbouwt of uw eigen praktijk verdiept, sessies zijn gestructureerd, praktijkgericht en worden begeleid door ervaren vakmensen.",
+        "features": [
+          "Gestructureerd, praktijkgericht curriculum",
+          "Praktijksessies in kleine groepen",
+          "Begeleiding afgestemd op uw ervaringsniveau"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Laten we in gesprek gaan",
+    "subtitle": "Neem contact op met vragen, of om te ontdekken welke dienst bij u past.",
+    "form": {
+      "name": "Volledige naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer",
+      "message": "Bericht",
+      "messagePlaceholder": "Vertel ons kort waar u naar op zoek bent...",
+      "submit": "Bericht versturen",
+      "note": "Dit formulier is uitsluitend voor vragen; wij verwerken geen boekingen of betalingen online."
+    },
+    "infoTitle": "Contactgegevens",
+    "addressTitle": "Adres",
+    "address": "[Bedrijfsadres]",
+    "phoneTitle": "Telefoon",
+    "phoneValue": "[Telefoonnummer]",
+    "emailTitle": "E-mail",
+    "email": "[E-mailadres]",
+    "hoursTitle": "Openingstijden",
+    "hours": "[Openingstijden]"
+  },
+  "footer": {
+    "tagline": "Gezondheid, schoonheid en balans — met een persoonlijke signatuur.",
+    "quickLinks": "Snelle links",
+    "servicesLinks": "Diensten",
+    "rights": "Alle rechten voorbehouden."
+  },
+  "imageAlt": {
+    "hero": "Warm, zacht verlicht redactioneel portret dat het Body Signature-merk vertegenwoordigt",
+    "about1": "Rustig, zacht verlicht interieur dat de Body Signature-klantervaring vertegenwoordigt",
+    "about2": "Warm getinte detailopname die persoonlijke, aandachtige zorg vertegenwoordigt",
+    "medicalHealthcare": "Warm, professioneel redactioneel beeld dat medische en gezondheidszorgdiensten vertegenwoordigt",
+    "herbalMedicine": "Botanisch stilleven in warme goudtinten dat kruidengeneeskunde vertegenwoordigt",
+    "alternativeMedicine": "Rustig natuurlijk stilleven dat alternatieve geneeskunde en balans vertegenwoordigt",
+    "beauty": "Redactioneel schoonheidsportret in warme goudtinten dat schoonheidsdiensten voor vrouwen en mannen vertegenwoordigt",
+    "trainingCourses": "Professionele trainingsomgeving in warme redactionele belichting"
+  }
+}

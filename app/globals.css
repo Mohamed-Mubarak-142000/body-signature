@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Body Signature brand gold, extracted from the logo gradient */
+  --gold-100: #f8e9d4;
+  --gold-200: #f3c280;
+  --gold-300: #e7bb7e;
+  --gold-400: #d9a55c;
+  --gold-500: #c48a3e;
+  --gold-600: #a6702c;
+  --gold-700: #82581f;
+
+  --background: #fff;
+  --foreground: #211c16;
+  --card: #ffffff;
+  --card-foreground: #211c16;
+  --popover: #ffffff;
+  --popover-foreground: #211c16;
+  --primary: var(--gold-500);
+  --primary-foreground: #fff;
+  --secondary: #f1e9dc;
+  --secondary-foreground: #211c16;
+  --muted: #f1e9dc;
+  --muted-foreground: #6b6055;
+  --accent: var(--gold-300);
+  --accent-foreground: #211c16;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e5dacb;
+  --input: #e5dacb;
+  --ring: var(--gold-500);
+  --chart-1: var(--gold-300);
+  --chart-2: var(--gold-500);
+  --chart-3: #6b6055;
+  --chart-4: #211c16;
+  --chart-5: var(--gold-700);
+  --radius: 0.375rem;
+  --sidebar: #fff;
+  --sidebar-foreground: #211c16;
+  --sidebar-primary: var(--gold-500);
+  --sidebar-primary-foreground: #fff;
+  --sidebar-accent: #f1e9dc;
+  --sidebar-accent-foreground: #211c16;
+  --sidebar-border: #e5dacb;
+  --sidebar-ring: var(--gold-500);
+}
+
+.dark {
+  --background: #1b1712;
+  --foreground: #f3ecdf;
+  --card: #241f19;
+  --card-foreground: #f3ecdf;
+  --popover: #241f19;
+  --popover-foreground: #f3ecdf;
+  --primary: var(--gold-300);
+  --primary-foreground: #1b1712;
+  --secondary: #2e2820;
+  --secondary-foreground: #f3ecdf;
+  --muted: #2e2820;
+  --muted-foreground: #b8aa95;
+  --accent: var(--gold-200);
+  --accent-foreground: #1b1712;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(231, 187, 126, 0.18);
+  --input: rgba(231, 187, 126, 0.18);
+  --ring: var(--gold-300);
+  --chart-1: var(--gold-300);
+  --chart-2: var(--gold-500);
+  --chart-3: #b8aa95;
+  --chart-4: #f3ecdf;
+  --chart-5: var(--gold-700);
+  --sidebar: #1b1712;
+  --sidebar-foreground: #f3ecdf;
+  --sidebar-primary: var(--gold-300);
+  --sidebar-primary-foreground: #1b1712;
+  --sidebar-accent: #2e2820;
+  --sidebar-accent-foreground: #f3ecdf;
+  --sidebar-border: rgba(231, 187, 126, 0.18);
+  --sidebar-ring: var(--gold-300);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
