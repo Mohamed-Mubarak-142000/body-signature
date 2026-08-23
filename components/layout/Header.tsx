@@ -93,6 +93,12 @@ export function Header() {
           </Link>
           <ServicesMegaMenu anchorRef={headerRef} />
           <Link
+            href="/shop"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {t("shop")}
+          </Link>
+          <Link
             href="/contact"
             className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
@@ -101,6 +107,12 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
+          <Link
+            href="/cart"
+            className="hidden text-base font-medium text-muted-foreground transition-colors hover:text-foreground md:block"
+          >
+            {t("cart")}
+          </Link>
           <Link
             href="/account"
             className="hidden text-base font-medium text-muted-foreground transition-colors hover:text-foreground md:block"
@@ -224,12 +236,36 @@ export function Header() {
                     nativeButton={false}
                     render={
                       <Link
+                        href="/shop"
+                        className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                      />
+                    }
+                  >
+                    {t("shop")}
+                  </SheetClose>
+
+                  <SheetClose
+                    nativeButton={false}
+                    render={
+                      <Link
                         href="/contact"
                         className="text-lg font-medium text-foreground transition-colors hover:text-primary"
                       />
                     }
                   >
                     {t("contact")}
+                  </SheetClose>
+
+                  <SheetClose
+                    nativeButton={false}
+                    render={
+                      <Link
+                        href="/cart"
+                        className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                      />
+                    }
+                  >
+                    {t("cart")}
                   </SheetClose>
 
                   <SheetClose

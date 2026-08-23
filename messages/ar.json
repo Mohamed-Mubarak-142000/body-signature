@@ -8,6 +8,8 @@
     "about": "من نحن",
     "services": "الخدمات",
     "contact": "تواصل معنا",
+    "shop": "المتجر",
+    "cart": "السلة",
     "account": "حسابي",
     "menu": "القائمة",
     "allServices": "عرض كل الخدمات"
@@ -356,6 +358,59 @@
       "status": "الحالة",
       "total": "الإجمالي",
       "requested": "تاريخ الطلب"
+    }
+  },
+  "shop": {
+    "eyebrow": "المتجر",
+    "title": "المتجر",
+    "subtitle": "منتجات تدعم روتينك اليومي، مختارة من Body Signature.",
+    "allCategories": "الكل",
+    "empty": "لا توجد منتجات في هذا التصنيف بعد.",
+    "outOfStock": "غير متوفر",
+    "product": {
+      "addToCart": "أضف إلى السلة",
+      "addingToCart": "جارٍ الإضافة...",
+      "addedToCart": "تمت الإضافة إلى السلة",
+      "addToWishlist": "أضف إلى المفضلة",
+      "addedToWishlist": "تمت الإضافة إلى المفضلة",
+      "backToShop": "العودة إلى المتجر",
+      "signInRequired": "يرجى تسجيل الدخول لإضافة منتجات إلى سلتك."
+    },
+    "cart": {
+      "title": "سلتك",
+      "empty": "سلتك فارغة.",
+      "browseCta": "تصفح المنتجات",
+      "quantity": "الكمية",
+      "remove": "إزالة",
+      "total": "الإجمالي",
+      "checkout": "المتابعة للدفع"
+    },
+    "checkout": {
+      "eyebrow": "إتمام الطلب",
+      "title": "إتمام الطلب",
+      "subtitle": "أدخل بيانات التوصيل لإتمام طلبك.",
+      "shippingAddress": "عنوان التوصيل",
+      "shippingAddressPlaceholder": "الشارع، المدينة، الرمز البريدي",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "+31 6 1234 5678",
+      "paymentMethod": "طريقة الدفع",
+      "cod": "الدفع عند الاستلام",
+      "manualTransfer": "تحويل بنكي",
+      "orderSummary": "ملخص الطلب",
+      "total": "الإجمالي",
+      "submit": "تأكيد الطلب",
+      "sending": "جارٍ تنفيذ الطلب...",
+      "errors": {
+        "addressRequired": "يرجى إدخال عنوان التوصيل.",
+        "phoneRequired": "يرجى إدخال رقم الهاتف.",
+        "submitFailed": "تعذّر تنفيذ طلبك. يرجى المحاولة مرة أخرى."
+      }
+    },
+    "orderConfirmed": {
+      "title": "شكرًا لطلبك",
+      "subtitle": "لقد استلمنا طلبك وسنؤكده قريبًا.",
+      "orderNumber": "رقم الطلب",
+      "viewAccount": "عرض طلباتك"
     }
   },
   "footer": {

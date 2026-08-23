@@ -8,6 +8,8 @@
     "about": "Over ons",
     "services": "Diensten",
     "contact": "Contact",
+    "shop": "Shop",
+    "cart": "Winkelwagen",
     "account": "Account",
     "menu": "Menu",
     "allServices": "Bekijk alle diensten"
@@ -356,6 +358,59 @@
       "status": "Status",
       "total": "Totaal",
       "requested": "Aangevraagd"
+    }
+  },
+  "shop": {
+    "eyebrow": "Shop",
+    "title": "Shop",
+    "subtitle": "Producten die uw routine ondersteunen, samengesteld door Body Signature.",
+    "allCategories": "Alle",
+    "empty": "Nog geen producten in deze categorie.",
+    "outOfStock": "Niet op voorraad",
+    "product": {
+      "addToCart": "In winkelwagen",
+      "addingToCart": "Toevoegen…",
+      "addedToCart": "Toegevoegd aan winkelwagen",
+      "addToWishlist": "Aan verlanglijst toevoegen",
+      "addedToWishlist": "Toegevoegd aan verlanglijst",
+      "backToShop": "Terug naar shop",
+      "signInRequired": "Log in om producten aan uw winkelwagen toe te voegen."
+    },
+    "cart": {
+      "title": "Uw winkelwagen",
+      "empty": "Uw winkelwagen is leeg.",
+      "browseCta": "Producten bekijken",
+      "quantity": "Aantal",
+      "remove": "Verwijderen",
+      "total": "Totaal",
+      "checkout": "Afrekenen"
+    },
+    "checkout": {
+      "eyebrow": "Afrekenen",
+      "title": "Afrekenen",
+      "subtitle": "Vul uw bezorggegevens in om uw bestelling te plaatsen.",
+      "shippingAddress": "Bezorgadres",
+      "shippingAddressPlaceholder": "Straat, plaats, postcode",
+      "phone": "Telefoonnummer",
+      "phonePlaceholder": "+31 6 1234 5678",
+      "paymentMethod": "Betaalmethode",
+      "cod": "Betalen bij bezorging",
+      "manualTransfer": "Bankoverschrijving",
+      "orderSummary": "Besteloverzicht",
+      "total": "Totaal",
+      "submit": "Bestelling plaatsen",
+      "sending": "Bestelling plaatsen…",
+      "errors": {
+        "addressRequired": "Vul een bezorgadres in.",
+        "phoneRequired": "Vul een telefoonnummer in.",
+        "submitFailed": "Bestelling plaatsen is mislukt. Probeer het opnieuw."
+      }
+    },
+    "orderConfirmed": {
+      "title": "Bedankt voor uw bestelling",
+      "subtitle": "We hebben uw bestelling ontvangen en bevestigen deze binnenkort.",
+      "orderNumber": "Bestelnummer",
+      "viewAccount": "Bekijk uw bestellingen"
     }
   },
   "footer": {

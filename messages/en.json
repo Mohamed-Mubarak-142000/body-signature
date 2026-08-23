@@ -8,6 +8,8 @@
     "about": "About",
     "services": "Services",
     "contact": "Contact",
+    "shop": "Shop",
+    "cart": "Cart",
     "account": "Account",
     "menu": "Menu",
     "allServices": "View all services"
@@ -356,6 +358,59 @@
       "status": "Status",
       "total": "Total",
       "requested": "Requested"
+    }
+  },
+  "shop": {
+    "eyebrow": "Shop",
+    "title": "Shop",
+    "subtitle": "Products to support your routine, curated by Body Signature.",
+    "allCategories": "All",
+    "empty": "No products in this category yet.",
+    "outOfStock": "Out of stock",
+    "product": {
+      "addToCart": "Add to cart",
+      "addingToCart": "Adding…",
+      "addedToCart": "Added to cart",
+      "addToWishlist": "Add to wishlist",
+      "addedToWishlist": "Added to wishlist",
+      "backToShop": "Back to shop",
+      "signInRequired": "Please sign in to add items to your cart."
+    },
+    "cart": {
+      "title": "Your cart",
+      "empty": "Your cart is empty.",
+      "browseCta": "Browse products",
+      "quantity": "Qty",
+      "remove": "Remove",
+      "total": "Total",
+      "checkout": "Proceed to checkout"
+    },
+    "checkout": {
+      "eyebrow": "Checkout",
+      "title": "Checkout",
+      "subtitle": "Enter your delivery details to place your order.",
+      "shippingAddress": "Delivery address",
+      "shippingAddressPlaceholder": "Street, city, postal code",
+      "phone": "Phone number",
+      "phonePlaceholder": "+31 6 1234 5678",
+      "paymentMethod": "Payment method",
+      "cod": "Cash on delivery",
+      "manualTransfer": "Bank transfer",
+      "orderSummary": "Order summary",
+      "total": "Total",
+      "submit": "Place order",
+      "sending": "Placing order…",
+      "errors": {
+        "addressRequired": "Please enter a delivery address.",
+        "phoneRequired": "Please enter a phone number.",
+        "submitFailed": "Couldn't place your order. Please try again."
+      }
+    },
+    "orderConfirmed": {
+      "title": "Thank you for your order",
+      "subtitle": "We've received your order and will confirm it shortly.",
+      "orderNumber": "Order number",
+      "viewAccount": "View your orders"
     }
   },
   "footer": {
