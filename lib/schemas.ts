@@ -24,6 +24,7 @@ export type CategoryFormValues = z.infer<typeof categoryFormSchema>;
 export const productFormSchema = z.object({
   categoryId: z.string().min(1, "Required"),
   sku: z.string().min(1, "Required"),
+  slug: z.string().min(1, "Required"),
   price: z.coerce.number().nonnegative(),
   stockQuantity: z.coerce.number().int().nonnegative(),
   isActive: z.boolean(),

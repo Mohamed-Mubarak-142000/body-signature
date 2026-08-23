@@ -20,6 +20,7 @@ type Translation = { locale: string; name: string; description?: string | null }
 export type Product = {
   id: string;
   sku: string;
+  slug: string;
   price: string | number;
   stockQuantity: number;
   isActive: boolean;
@@ -34,6 +35,7 @@ function toFormValues(product?: Product, defaultCategoryId?: string): ProductFor
   return {
     categoryId: product?.categoryId ?? defaultCategoryId ?? "",
     sku: product?.sku ?? "",
+    slug: product?.slug ?? "",
     price: Number(product?.price ?? 0),
     stockQuantity: product?.stockQuantity ?? 0,
     isActive: product?.isActive ?? true,
@@ -108,6 +110,7 @@ export function ProductsClient({
 
   const columns: LegacyColumnDef<Product>[] = [
     { accessorKey: "sku", header: "SKU" },
+    { accessorKey: "slug", header: "Slug" },
     {
       id: "name",
       header: "Name (en)",
@@ -172,10 +175,14 @@ export function ProductsClient({
             <FormField label="SKU" error={errors.sku?.message}>
               <input className={inputClass} {...register("sku")} />
             </FormField>
-            <FormField label="Price" error={errors.price?.message}>
-              <input type="number" step="0.01" className={inputClass} {...register("price")} />
+            <FormField label="Slug (URL)" error={errors.slug?.message}>
+              <input className={inputClass} {...register("slug")} />
             </FormField>
           </div>
+
+          <FormField label="Price" error={errors.price?.message}>
+            <input type="number" step="0.01" className={inputClass} {...register("price")} />
+          </FormField>
 
           <div className="grid grid-cols-2 gap-3">
             <FormField label="Stock quantity" error={errors.stockQuantity?.message}>
