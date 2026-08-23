@@ -8,7 +8,8 @@
     "about": "Over ons",
     "services": "Diensten",
     "contact": "Contact",
-    "menu": "Menu"
+    "menu": "Menu",
+    "allServices": "Bekijk alle diensten"
   },
   "hero": {
     "eyebrow": "Body Signature",
@@ -72,6 +73,12 @@
     "detailCtaBody": "Neem contact op en wij helpen u te bepalen of dit bij u past.",
     "detailCtaButton": "Neem contact op",
     "featuresTitle": "Wat u kunt verwachten",
+    "aestheticWomenEyebrow": "Voor Vrouwen",
+    "aestheticWomenTitle": "Schoonheidsbehandelingen voor Vrouwen",
+    "aestheticWomenSubtitle": "Van gezichtsbehandelingen tot laser en peeling, elke behandeling met een persoonlijke, ontspannen aanpak.",
+    "aestheticMenEyebrow": "Voor Mannen",
+    "aestheticMenTitle": "Schoonheidsbehandelingen voor Mannen",
+    "aestheticMenSubtitle": "Directe, effectieve behandelingen afgestemd op de huid en agenda van mannen.",
     "categories": {
       "medical-healthcare": {
         "title": "Medisch & Gezondheidszorg",
@@ -121,6 +128,96 @@
           "Gestructureerd, praktijkgericht curriculum",
           "Praktijksessies in kleine groepen",
           "Begeleiding afgestemd op uw ervaringsniveau"
+        ]
+      },
+      "facial-treatments-women": {
+        "title": "Gezichtsbehandelingen",
+        "summary": "Diepe reinigings- en verjongingsbehandelingen op maat van uw huid.",
+        "description": "Onze gezichtsbehandelingen combineren zachte diepe reiniging, exfoliatie en hydratatie voor een frisse, in balans gebrachte huid. Elke sessie begint met een korte huidbeoordeling, zodat de behandeling aansluit op wat uw huid die dag nodig heeft.",
+        "features": [
+          "Persoonlijke huidbeoordeling voor elke sessie",
+          "Diepreinigende en hydraterende technieken",
+          "Geschikt voor alle huidtypen"
+        ]
+      },
+      "laser-hair-removal-women": {
+        "title": "Laser Ontharing",
+        "summary": "Gladde, langdurige haarreductie met moderne lasertechnologie.",
+        "description": "Onze laserontharing gebruikt moderne technologie voor gladde, langdurige resultaten met minimaal ongemak. Sessies worden afgestemd op uw huid- en haartype, met een duidelijk plan van consult tot nazorg.",
+        "features": [
+          "Consult om technologie af te stemmen op huid en haartype",
+          "Comfortabele, moderne laserapparatuur",
+          "Duidelijke nazorg tussen sessies"
+        ]
+      },
+      "peeling-skin-renewal-women": {
+        "title": "Peeling & Huidvernieuwing",
+        "summary": "Zachte exfoliërende behandelingen die de huid vernieuwen en verhelderen.",
+        "description": "Onze peelingbehandelingen exfoliëren zachtjes de huid voor een frissere, egalere teint. Wij kiezen de juiste sterkte en formule voor uw huid, zodat vernieuwing plaatsvindt zonder onnodige irritatie.",
+        "features": [
+          "Peelingsterkte afgestemd op de gevoeligheid van uw huid",
+          "Focus op teint, textuur en glans",
+          "Nazorgadvies om de vernieuwde huid te beschermen"
+        ]
+      },
+      "skin-brightening-women": {
+        "title": "Huidverheldering",
+        "summary": "Behandelingen die de teint egaliseren en een natuurlijke glow herstellen.",
+        "description": "Onze huidverhelderende behandelingen richten zich op een ongelijke teint en dofheid, om een natuurlijke, gezonde uitstraling te herstellen. Elk plan wordt opgebouwd rond de geschiedenis en doelen van uw huid, met realistische verwachtingen vanaf het begin.",
+        "features": [
+          "Beoordeling van huidteint en -geschiedenis vooraf",
+          "Geleidelijke, huidvriendelijke aanpak",
+          "Advies om resultaten thuis te behouden"
+        ]
+      },
+      "beauty-grooming-women": {
+        "title": "Schoonheid & Verzorging",
+        "summary": "Dagelijkse beautyrituelen, van basisverzorging tot finishing touches.",
+        "description": "Van verzorgingsbasics tot finishing touches: onze diensten omvatten de dagelijkse rituelen die u helpen zich verzorgd te voelen. Elke sessie is ontspannen, met aandacht voor detail.",
+        "features": [
+          "Een reeks dagelijkse verzorgings- en beautydiensten",
+          "Ontspannen sessies met aandacht voor detail",
+          "Een rustige, privé studio-omgeving"
+        ]
+      },
+      "laser-hair-removal-men": {
+        "title": "Laser Ontharing",
+        "summary": "Effectieve, langdurige haarreductie afgestemd op de huid en het haar van mannen.",
+        "description": "Onze laserontharing voor mannen is afgestemd op doorgaans grover haar en huid, voor effectieve, langdurige reductie met een eenvoudig, no-nonsense proces van consult tot nazorg.",
+        "features": [
+          "Technologie afgestemd op grovere haartypen",
+          "Eenvoudige planning en proces",
+          "Duidelijke nazorg tussen sessies"
+        ]
+      },
+      "facial-cleansing-men": {
+        "title": "Gezichtsreiniging",
+        "summary": "Directe diepreinigende behandelingen voor de huid van mannen.",
+        "description": "Onze gezichtsreiniging voor mannen richt zich op het diep reinigen van poriën, het beheersen van talg en het verzachten van irritatie door dagelijks scheren, in een snelle, praktische sessie.",
+        "features": [
+          "Diepe reiniging afgestemd op de huid van mannen",
+          "Aandacht voor scheerirritatie",
+          "Snelle, efficiënte sessies"
+        ]
+      },
+      "skin-care-men": {
+        "title": "Huidverzorging & Anti-Aging",
+        "summary": "Praktische huidverzorgings- en anti-agingbehandelingen voor mannen.",
+        "description": "Onze huidverzorging voor mannen pakt dagelijkse aandachtspunten aan zoals fijne lijntjes, dofheid en een ongelijke textuur, met een praktische aanpak en duidelijk advies voor thuis.",
+        "features": [
+          "Praktische, eenvoudige behandelplannen",
+          "Focus op fijne lijntjes, dofheid en textuur",
+          "Eenvoudig advies voor thuisverzorging"
+        ]
+      },
+      "grooming-men": {
+        "title": "Verzorging & Welzijn",
+        "summary": "Verzorgingsdiensten die een complete zelfzorgroutine afronden.",
+        "description": "Van verzorgingsbasics tot ontspannen finishing touches: onze diensten voor mannen ronden een complete zelfzorgroutine af in een rustige, privé omgeving.",
+        "features": [
+          "Een reeks verzorgings- en welzijnsdiensten",
+          "Rustige, privé studio-omgeving",
+          "Sessies afgestemd op een druk schema"
         ]
       }
     }
@@ -172,6 +269,15 @@
     "herbalMedicine": "Botanisch stilleven in warme goudtinten dat kruidengeneeskunde vertegenwoordigt",
     "alternativeMedicine": "Rustig natuurlijk stilleven dat alternatieve geneeskunde en balans vertegenwoordigt",
     "beauty": "Redactioneel schoonheidsportret in warme goudtinten dat schoonheidsdiensten voor vrouwen en mannen vertegenwoordigt",
-    "trainingCourses": "Professionele trainingsomgeving in warme redactionele belichting"
+    "trainingCourses": "Professionele trainingsomgeving in warme redactionele belichting",
+    "facialTreatmentsWomen": "Warm, zacht verlicht redactioneel beeld dat gezichtsbehandelingen voor vrouwen vertegenwoordigt",
+    "laserHairRemovalWomen": "Rustig redactioneel beeld dat laserontharing voor vrouwen vertegenwoordigt",
+    "peelingSkinRenewalWomen": "Warm getint stilleven dat peeling- en huidvernieuwingsbehandelingen vertegenwoordigt",
+    "skinBrighteningWomen": "Zacht redactioneel beeld dat huidverhelderende behandelingen vertegenwoordigt",
+    "beautyGroomingWomen": "Redactioneel schoonheidsportret dat verzorgings- en beautydiensten voor vrouwen vertegenwoordigt",
+    "laserHairRemovalMen": "Rustig redactioneel beeld dat laserontharing voor mannen vertegenwoordigt",
+    "facialCleansingMen": "Warm redactioneel beeld dat gezichtsreiniging voor mannen vertegenwoordigt",
+    "skinCareMen": "Redactioneel beeld dat huidverzorging en anti-aging behandelingen voor mannen vertegenwoordigt",
+    "groomingMen": "Redactioneel beeld dat verzorgings- en welzijnsdiensten voor mannen vertegenwoordigt"
   }
 }

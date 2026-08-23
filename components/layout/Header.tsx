@@ -1,11 +1,12 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { ServicesMegaMenu } from "@/components/layout/ServicesMegaMenu";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -14,14 +15,22 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  aestheticMenServices,
+  aestheticWomenServices,
+  serviceCategories,
+} from "@/content/services";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 export function Header() {
   const t = useTranslations("nav");
+  const tServices = useTranslations("services");
   const brand = useTranslations("brand");
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 8);
@@ -36,12 +45,23 @@ export function Header() {
   const links = [
     { href: "/", label: t("home") },
     { href: "/about", label: t("about") },
-    { href: "/services", label: t("services") },
-    { href: "/contact", label: t("contact") },
+  ];
+
+  const mobileServiceGroups = [
+    { eyebrow: tServices("eyebrow"), services: serviceCategories },
+    {
+      eyebrow: tServices("aestheticWomenEyebrow"),
+      services: aestheticWomenServices,
+    },
+    {
+      eyebrow: tServices("aestheticMenEyebrow"),
+      services: aestheticMenServices,
+    },
   ];
 
   return (
     <header
+      ref={headerRef}
       className={cn(
         "sticky top-0 z-30 bg-background transition-shadow",
         scrolled && "shadow-sm",
@@ -59,15 +79,25 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
+          <Link
+            href="/"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {t("home")}
+          </Link>
+          <Link
+            href="/about"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {t("about")}
+          </Link>
+          <ServicesMegaMenu anchorRef={headerRef} />
+          <Link
+            href="/contact"
+            className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {t("contact")}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -126,6 +156,75 @@ export function Header() {
                       {link.label}
                     </SheetClose>
                   ))}
+
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => setMobileServicesOpen((prev) => !prev)}
+                      aria-expanded={mobileServicesOpen}
+                      className="flex w-full items-center justify-between text-lg font-medium text-foreground transition-colors hover:text-primary"
+                    >
+                      {t("services")}
+                      <ChevronDown
+                        className={cn(
+                          "size-4 transition-transform duration-200",
+                          mobileServicesOpen && "rotate-180",
+                        )}
+                      />
+                    </button>
+
+                    {mobileServicesOpen && (
+                      <div className="mt-5 flex flex-col gap-5 ps-4">
+                        {mobileServiceGroups.map((group) => (
+                          <div key={group.eyebrow}>
+                            <p className="text-xs font-medium uppercase tracking-[0.2em] text-gold-600">
+                              {group.eyebrow}
+                            </p>
+                            <div className="mt-3 flex flex-col gap-3">
+                              {group.services.map((service) => (
+                                <SheetClose
+                                  key={service.slug}
+                                  nativeButton={false}
+                                  render={
+                                    <Link
+                                      href={`/services/${service.slug}`}
+                                      className="text-base font-medium text-muted-foreground transition-colors hover:text-primary"
+                                    />
+                                  }
+                                >
+                                  {tServices(`categories.${service.slug}.title`)}
+                                </SheetClose>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+
+                        <SheetClose
+                          nativeButton={false}
+                          render={
+                            <Link
+                              href="/services"
+                              className="text-sm font-medium text-gold-600 transition-colors hover:text-gold-700"
+                            />
+                          }
+                        >
+                          {t("allServices")}
+                        </SheetClose>
+                      </div>
+                    )}
+                  </div>
+
+                  <SheetClose
+                    nativeButton={false}
+                    render={
+                      <Link
+                        href="/contact"
+                        className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                      />
+                    }
+                  >
+                    {t("contact")}
+                  </SheetClose>
                 </nav>
 
                 <LanguageSwitcher className="mt-auto" />

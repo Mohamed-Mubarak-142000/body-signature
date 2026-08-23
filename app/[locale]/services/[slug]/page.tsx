@@ -5,10 +5,10 @@ import { notFound } from "next/navigation";
 import { Reveal } from "@/components/effects/Reveal";
 import { RevealImage } from "@/components/effects/RevealImage";
 import { CTASection } from "@/components/sections/CTASection";
-import { getServiceMeta, serviceCategories } from "@/content/services";
+import { allServices, getServiceMeta } from "@/content/services";
 
 export function generateStaticParams() {
-  return serviceCategories.map((service) => ({ slug: service.slug }));
+  return allServices.map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({
