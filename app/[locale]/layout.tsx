@@ -9,6 +9,7 @@ import { PageLoader } from "@/components/effects/PageLoader";
 import { ScrollProgress } from "@/components/effects/ScrollProgress";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { WaveDivider } from "@/components/layout/WaveDivider";
 import { routing } from "@/i18n/routing";
 
 const inter = Inter({
@@ -84,6 +85,7 @@ export default async function LocaleLayout({
           <ScrollProgress />
           <Header />
           <main>{children}</main>
+          <WaveDivider />
           <Footer />
         </NextIntlClientProvider>
       </body>

@@ -15,7 +15,7 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-24 pb-6 md:grid-cols-2 md:pt-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-10 pb-6 md:grid-cols-2 md:pt-20">
         <motion.div
           initial="hidden"
           animate="visible"
