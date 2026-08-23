@@ -1,10 +1,22 @@
-import { Placeholder } from "@/components/placeholder";
+import { backendFetch } from "@/lib/backend";
+import { ContentClient, type Page } from "./content-client";
 
-export default function ContentPage() {
+async function getPages(): Promise<Page[]> {
+  const res = await backendFetch("/api/pages");
+  if (!res.ok) return [];
+  return res.json();
+}
+
+export default async function ContentPage() {
+  const pages = await getPages();
+
   return (
-    <Placeholder
-      title="Content"
-      note="Waiting on the backend's page/CMS endpoints (BACKEND_PRD.md §4.3)."
-    />
+    <div>
+      <h1 className="text-xl font-semibold">Content</h1>
+      <p className="mt-1 mb-6 text-sm text-neutral-500">
+        Site copy per page, in all three languages.
+      </p>
+      <ContentClient pages={pages} />
+    </div>
   );
 }

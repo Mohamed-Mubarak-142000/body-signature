@@ -1,10 +1,22 @@
-import { Placeholder } from "@/components/placeholder";
+import { backendFetch } from "@/lib/backend";
+import { OrdersClient, type Order } from "./orders-client";
 
-export default function OrdersPage() {
+async function getOrders(): Promise<Order[]> {
+  const res = await backendFetch("/api/orders");
+  if (!res.ok) return [];
+  return res.json();
+}
+
+export default async function OrdersPage() {
+  const orders = await getOrders();
+
   return (
-    <Placeholder
-      title="Orders"
-      note="Waiting on the backend's order lifecycle endpoints (BACKEND_PRD.md §4.8)."
-    />
+    <div>
+      <h1 className="text-xl font-semibold">Orders</h1>
+      <p className="mt-1 mb-6 text-sm text-neutral-500">
+        Move an order through its lifecycle with the status dropdown.
+      </p>
+      <OrdersClient orders={orders} />
+    </div>
   );
 }
