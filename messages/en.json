@@ -72,6 +72,12 @@
     "detailCtaBody": "Reach out and we'll help you understand whether it's the right fit for you.",
     "detailCtaButton": "Contact us",
     "featuresTitle": "What to expect",
+    "aestheticWomenEyebrow": "For Women",
+    "aestheticWomenTitle": "Aesthetic Services for Women",
+    "aestheticWomenSubtitle": "From facial treatments to laser and peeling, each service is delivered with an unhurried, personal touch.",
+    "aestheticMenEyebrow": "For Men",
+    "aestheticMenTitle": "Aesthetic Services for Men",
+    "aestheticMenSubtitle": "Straightforward, effective treatments designed around men's skin and schedules.",
     "categories": {
       "medical-healthcare": {
         "title": "Medical & Healthcare",
@@ -121,6 +127,96 @@
           "Structured, practical curriculum",
           "Small-group, hands-on sessions",
           "Guidance suited to your experience level"
+        ]
+      },
+      "facial-treatments-women": {
+        "title": "Facial Treatments",
+        "summary": "Deep-cleansing and rejuvenating facials tailored to your skin.",
+        "description": "Our facial treatments combine gentle deep-cleansing, exfoliation, and hydration to leave your skin refreshed and balanced. Each session begins with a short skin assessment, so the treatment responds to what your skin needs that day.",
+        "features": [
+          "Personalized skin assessment before every session",
+          "Deep-cleansing and hydrating techniques",
+          "Suitable for all skin types"
+        ]
+      },
+      "laser-hair-removal-women": {
+        "title": "Laser Hair Removal",
+        "summary": "Smooth, long-lasting hair reduction with modern laser technology.",
+        "description": "Our laser hair removal treatments use modern technology to deliver smooth, long-lasting results with minimal discomfort. Sessions are scheduled around your skin and hair type, with a clear plan from consultation through aftercare.",
+        "features": [
+          "Consultation to match technology to your skin and hair type",
+          "Comfortable, modern laser equipment",
+          "Clear aftercare guidance between sessions"
+        ]
+      },
+      "peeling-skin-renewal-women": {
+        "title": "Peeling & Skin Renewal",
+        "summary": "Gentle exfoliating treatments that renew and brighten skin.",
+        "description": "Our peeling treatments gently exfoliate the skin's surface to reveal a fresher, more even tone underneath. We select the right strength and formula for your skin, so renewal happens without unnecessary irritation.",
+        "features": [
+          "Peeling strength matched to your skin's sensitivity",
+          "Focus on tone, texture, and radiance",
+          "Aftercare guidance to protect newly renewed skin"
+        ]
+      },
+      "skin-brightening-women": {
+        "title": "Skin Whitening & Brightening",
+        "summary": "Treatments that even tone and restore a natural glow.",
+        "description": "Our skin brightening treatments target uneven tone and dullness, helping restore a natural, healthy-looking glow. Every plan is built around your skin's history and goals, with realistic expectations set from the start.",
+        "features": [
+          "Assessment of skin tone and history before treatment",
+          "Gradual, skin-respectful approach",
+          "Guidance on maintaining results at home"
+        ]
+      },
+      "beauty-grooming-women": {
+        "title": "Beauty & Grooming",
+        "summary": "Everyday beauty rituals, from grooming to finishing touches.",
+        "description": "From grooming essentials to finishing touches, our beauty services cover the everyday rituals that help you feel put-together. Each visit is unhurried, with attention to detail throughout.",
+        "features": [
+          "A range of everyday grooming and beauty services",
+          "Unhurried, detail-focused sessions",
+          "A calm, private studio environment"
+        ]
+      },
+      "laser-hair-removal-men": {
+        "title": "Laser Hair Removal",
+        "summary": "Effective, long-lasting hair reduction designed for men's skin and hair.",
+        "description": "Our laser hair removal for men is calibrated for typically coarser hair and skin, delivering effective, long-lasting reduction with a straightforward, no-fuss process from consultation to aftercare.",
+        "features": [
+          "Technology calibrated for coarser hair types",
+          "Straightforward scheduling and process",
+          "Clear aftercare guidance between sessions"
+        ]
+      },
+      "facial-cleansing-men": {
+        "title": "Facial Cleansing",
+        "summary": "Straightforward deep-cleansing treatments for men's skin.",
+        "description": "Our facial cleansing treatments for men focus on deep-cleansing pores, managing oil, and calming irritation from daily shaving or grooming, in a quick, no-nonsense session.",
+        "features": [
+          "Deep-cleansing suited to men's skin",
+          "Attention to shaving-related irritation",
+          "Quick, efficient sessions"
+        ]
+      },
+      "skin-care-men": {
+        "title": "Skin Care & Anti-Aging",
+        "summary": "Practical skin care and anti-aging treatments for men.",
+        "description": "Our skin care treatments for men address everyday concerns like fine lines, dullness, and uneven texture with a practical, low-fuss approach and clear guidance you can follow at home.",
+        "features": [
+          "Practical, no-fuss treatment plans",
+          "Focus on fine lines, dullness, and texture",
+          "Simple at-home care guidance"
+        ]
+      },
+      "grooming-men": {
+        "title": "Grooming & Wellness",
+        "summary": "Grooming services that round out a complete self-care routine.",
+        "description": "From grooming essentials to relaxing finishing touches, our services for men round out a complete self-care routine in a calm, private setting.",
+        "features": [
+          "A range of grooming and wellness services",
+          "Calm, private studio environment",
+          "Sessions suited to a busy schedule"
         ]
       }
     }
@@ -172,6 +268,15 @@
     "herbalMedicine": "Botanical still life in warm gold tones representing herbal medicine",
     "alternativeMedicine": "Calm natural still life representing alternative medicine and balance",
     "beauty": "Editorial beauty portrait in warm gold tones representing beauty services for women and men",
-    "trainingCourses": "Professional training setting in warm editorial lighting"
+    "trainingCourses": "Professional training setting in warm editorial lighting",
+    "facialTreatmentsWomen": "Warm, softly lit editorial image representing facial treatments for women",
+    "laserHairRemovalWomen": "Calm clinical-editorial image representing laser hair removal for women",
+    "peelingSkinRenewalWomen": "Warm-toned still life representing peeling and skin renewal treatments",
+    "skinBrighteningWomen": "Soft editorial image representing skin whitening and brightening treatments",
+    "beautyGroomingWomen": "Editorial beauty portrait representing grooming and beauty services for women",
+    "laserHairRemovalMen": "Calm clinical-editorial image representing laser hair removal for men",
+    "facialCleansingMen": "Warm editorial image representing facial cleansing for men",
+    "skinCareMen": "Editorial image representing skin care and anti-aging treatments for men",
+    "groomingMen": "Editorial image representing grooming and wellness services for men"
   }
 }
