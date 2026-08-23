@@ -15,7 +15,7 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-10 md:grid-cols-2 md:py-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-24 pb-6 md:grid-cols-2 md:pt-20">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -25,7 +25,11 @@ export function Hero() {
             variants={fadeUp}
             className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-transparent bg-primary/25 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary"
           >
-            <BadgeCheck className="size-4.5" fill="currentColor" stroke="#f8e9d4" />
+            <BadgeCheck
+              className="size-4.5"
+              fill="currentColor"
+              stroke="#f8e9d4"
+            />
             {t("eyebrow")}
           </motion.p>
           <motion.h1

@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CTASection } from "@/components/sections/CTASection";
 import { Hero } from "@/components/sections/Hero";
+import { HighlightsBar } from "@/components/sections/HighlightsBar";
 import { HomeIntro } from "@/components/sections/HomeIntro";
 import { SectionHeader } from "@/components/sections/SectionHeader";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
@@ -12,6 +13,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
+      <HighlightsBar />
       <HomeIntro />
 
       <section className="mx-auto max-w-6xl px-6 py-20">
