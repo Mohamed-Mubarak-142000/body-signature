@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Body Signature — Dashboard
 
-## Getting Started
+The staff admin panel: Admin and Assistant sign in here to manage products,
+categories, orders, bookings, content, and contact messages. See
+`BACKEND_PRD.md` (in the `zefaaf-body-signature` repo) §4.2 for the role split.
 
-First, run the development server:
+**Status: scaffold.** Auth, layout, and role-gated nav are real. Most module
+pages are placeholders until the corresponding [backend](../zefaaf-body-signature-backend)
+endpoints exist — see that repo's README for what's built vs. planned.
+
+## Stack
+
+- Next.js (App Router) + Tailwind CSS
+- Auth.js v5 (`lib/auth.ts`) — Credentials only, no Google (staff have no self-signup)
+
+## Architecture
+
+**No database, no Prisma.** This app has zero direct data access — every read
+or write goes through the backend's HTTP API. Keep it that way; if a page
+needs data, add the endpoint to the backend and fetch it from here.
+
+**Login flow:** the Credentials provider's `authorize()` calls the backend's
+`POST /api/staff-login` with the entered email/password. On success, the
+backend returns a bearer token (a signed JWT, not a shared cookie — the two
+apps run on different origins). That token is stored in *this app's own*
+NextAuth session and attached as `Authorization: Bearer <token>` on every
+subsequent backend request via `lib/backend.ts`'s `backendFetch()`. Use
+`backendFetch()` for all server-side calls to the backend — don't hand-roll
+`fetch()` against `BACKEND_URL` elsewhere or you'll lose the auth header.
+
+**Role gating:** `lib/nav.ts` filters the sidebar by role; a page like
+`app/(dashboard)/team/page.tsx` that's admin-only also checks
+`session.user.role` itself, since the sidebar hiding a link doesn't stop
+someone from typing the URL.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env   # BACKEND_URL must point at a running backend
+npm install
+npm run dev             # http://localhost:3002
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You'll need at least one staff user in the backend's database
+(`role: admin` or `assistant`, with a bcrypt `passwordHash`) to log in —
+there's no seed script yet.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What's already real
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `lib/auth.ts` + `middleware.ts` — login, session, route protection
+- `lib/nav.ts` + `components/sidebar.tsx` — role-gated navigation
+- `app/(dashboard)/categories`, `.../services`, `.../messages` — real data
+  fetched from the backend
+- `app/(dashboard)/products`, `.../orders`, `.../bookings`, `.../content`,
+  `.../team` — placeholders, waiting on backend endpoints
