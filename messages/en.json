@@ -8,6 +8,7 @@
     "about": "About",
     "services": "Services",
     "contact": "Contact",
+    "account": "Account",
     "menu": "Menu",
     "allServices": "View all services"
   },
@@ -256,6 +257,106 @@
     "email": "hello@bodysignature.com",
     "hoursTitle": "Business hours",
     "hours": "Mon–Fri: 9:00–18:00, Sat: 10:00–14:00"
+  },
+  "auth": {
+    "orDivider": "or",
+    "googleCta": "Continue with Google",
+    "register": {
+      "eyebrow": "Create an account",
+      "title": "Join Body Signature",
+      "subtitle": "Save your details, track orders, and book appointments faster.",
+      "name": "Full name",
+      "namePlaceholder": "Jane Doe",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "At least 8 characters",
+      "submit": "Create account",
+      "sending": "Creating account…",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "success": "Check your email for a verification code.",
+      "errors": {
+        "nameRequired": "Please enter your name.",
+        "emailInvalid": "Please enter a valid email address.",
+        "passwordTooShort": "Password must be at least 8 characters.",
+        "submitFailed": "Couldn't create your account. That email may already be registered."
+      }
+    },
+    "verifyEmail": {
+      "eyebrow": "One more step",
+      "title": "Verify your email",
+      "subtitle": "Enter the 6-digit code we sent to {email}.",
+      "code": "Verification code",
+      "codePlaceholder": "123456",
+      "submit": "Verify",
+      "sending": "Verifying…",
+      "errors": {
+        "codeInvalid": "Please enter the 6-digit code.",
+        "submitFailed": "That code is invalid or has expired."
+      }
+    },
+    "login": {
+      "eyebrow": "Welcome back",
+      "title": "Sign in",
+      "subtitle": "Sign in to view your orders and bookings.",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "submit": "Sign in",
+      "sending": "Signing in…",
+      "forgotPassword": "Forgot your password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Create one",
+      "errors": {
+        "emailInvalid": "Please enter a valid email address.",
+        "invalidCredentials": "Incorrect email or password."
+      }
+    },
+    "forgotPassword": {
+      "eyebrow": "Reset your password",
+      "title": "Forgot your password?",
+      "subtitle": "Enter your email and we'll send you a reset code.",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Send reset code",
+      "sending": "Sending…",
+      "success": "If that email has an account, a code was sent.",
+      "backToLogin": "Back to sign in"
+    },
+    "resetPassword": {
+      "eyebrow": "Reset your password",
+      "title": "Choose a new password",
+      "subtitle": "Enter the code we sent to {email} and your new password.",
+      "code": "Reset code",
+      "codePlaceholder": "123456",
+      "newPassword": "New password",
+      "newPasswordPlaceholder": "At least 8 characters",
+      "submit": "Update password",
+      "sending": "Updating…",
+      "success": "Password updated. You can now sign in.",
+      "errors": {
+        "codeInvalid": "Please enter the 6-digit code.",
+        "passwordTooShort": "Password must be at least 8 characters.",
+        "submitFailed": "That code is invalid or has expired."
+      }
+    },
+    "account": {
+      "title": "Your account",
+      "signedInAs": "Signed in as",
+      "signOut": "Sign out",
+      "notSignedIn": "You're not signed in.",
+      "signInCta": "Sign in",
+      "ordersTitle": "Your orders",
+      "noOrders": "No orders yet.",
+      "bookingsTitle": "Your bookings",
+      "noBookings": "No bookings yet.",
+      "orderNumber": "Order",
+      "status": "Status",
+      "total": "Total",
+      "requested": "Requested"
+    }
   },
   "footer": {
     "tagline": "Health, beauty, and balance — with a personal signature.",

@@ -8,6 +8,7 @@
     "about": "Over ons",
     "services": "Diensten",
     "contact": "Contact",
+    "account": "Account",
     "menu": "Menu",
     "allServices": "Bekijk alle diensten"
   },
@@ -256,6 +257,106 @@
     "email": "hello@bodysignature.com",
     "hoursTitle": "Openingstijden",
     "hours": "Ma–vr: 9:00–18:00, za: 10:00–14:00"
+  },
+  "auth": {
+    "orDivider": "of",
+    "googleCta": "Doorgaan met Google",
+    "register": {
+      "eyebrow": "Account aanmaken",
+      "title": "Word lid van Body Signature",
+      "subtitle": "Bewaar uw gegevens, volg bestellingen en boek sneller een afspraak.",
+      "name": "Volledige naam",
+      "namePlaceholder": "Jane Doe",
+      "email": "E-mailadres",
+      "emailPlaceholder": "u@voorbeeld.nl",
+      "password": "Wachtwoord",
+      "passwordPlaceholder": "Minimaal 8 tekens",
+      "submit": "Account aanmaken",
+      "sending": "Account wordt aangemaakt…",
+      "haveAccount": "Heeft u al een account?",
+      "signIn": "Inloggen",
+      "success": "Controleer uw e-mail voor een verificatiecode.",
+      "errors": {
+        "nameRequired": "Vul uw naam in.",
+        "emailInvalid": "Vul een geldig e-mailadres in.",
+        "passwordTooShort": "Wachtwoord moet minimaal 8 tekens bevatten.",
+        "submitFailed": "Account aanmaken is mislukt. Dit e-mailadres is mogelijk al geregistreerd."
+      }
+    },
+    "verifyEmail": {
+      "eyebrow": "Nog één stap",
+      "title": "Bevestig uw e-mailadres",
+      "subtitle": "Voer de 6-cijferige code in die we naar {email} hebben gestuurd.",
+      "code": "Verificatiecode",
+      "codePlaceholder": "123456",
+      "submit": "Bevestigen",
+      "sending": "Bevestigen…",
+      "errors": {
+        "codeInvalid": "Voer de 6-cijferige code in.",
+        "submitFailed": "Deze code is ongeldig of verlopen."
+      }
+    },
+    "login": {
+      "eyebrow": "Welkom terug",
+      "title": "Inloggen",
+      "subtitle": "Log in om uw bestellingen en boekingen te bekijken.",
+      "email": "E-mailadres",
+      "emailPlaceholder": "u@voorbeeld.nl",
+      "password": "Wachtwoord",
+      "passwordPlaceholder": "Uw wachtwoord",
+      "submit": "Inloggen",
+      "sending": "Bezig met inloggen…",
+      "forgotPassword": "Wachtwoord vergeten?",
+      "noAccount": "Nog geen account?",
+      "signUp": "Account aanmaken",
+      "errors": {
+        "emailInvalid": "Vul een geldig e-mailadres in.",
+        "invalidCredentials": "Onjuist e-mailadres of wachtwoord."
+      }
+    },
+    "forgotPassword": {
+      "eyebrow": "Wachtwoord resetten",
+      "title": "Wachtwoord vergeten?",
+      "subtitle": "Vul uw e-mailadres in en we sturen u een resetcode.",
+      "email": "E-mailadres",
+      "emailPlaceholder": "u@voorbeeld.nl",
+      "submit": "Resetcode versturen",
+      "sending": "Versturen…",
+      "success": "Als dit e-mailadres een account heeft, is er een code verstuurd.",
+      "backToLogin": "Terug naar inloggen"
+    },
+    "resetPassword": {
+      "eyebrow": "Wachtwoord resetten",
+      "title": "Kies een nieuw wachtwoord",
+      "subtitle": "Vul de code in die we naar {email} hebben gestuurd, samen met uw nieuwe wachtwoord.",
+      "code": "Resetcode",
+      "codePlaceholder": "123456",
+      "newPassword": "Nieuw wachtwoord",
+      "newPasswordPlaceholder": "Minimaal 8 tekens",
+      "submit": "Wachtwoord bijwerken",
+      "sending": "Bijwerken…",
+      "success": "Wachtwoord bijgewerkt. U kunt nu inloggen.",
+      "errors": {
+        "codeInvalid": "Voer de 6-cijferige code in.",
+        "passwordTooShort": "Wachtwoord moet minimaal 8 tekens bevatten.",
+        "submitFailed": "Deze code is ongeldig of verlopen."
+      }
+    },
+    "account": {
+      "title": "Uw account",
+      "signedInAs": "Ingelogd als",
+      "signOut": "Uitloggen",
+      "notSignedIn": "U bent niet ingelogd.",
+      "signInCta": "Inloggen",
+      "ordersTitle": "Uw bestellingen",
+      "noOrders": "Nog geen bestellingen.",
+      "bookingsTitle": "Uw boekingen",
+      "noBookings": "Nog geen boekingen.",
+      "orderNumber": "Bestelling",
+      "status": "Status",
+      "total": "Totaal",
+      "requested": "Aangevraagd"
+    }
   },
   "footer": {
     "tagline": "Gezondheid, schoonheid en balans — met een persoonlijke signatuur.",

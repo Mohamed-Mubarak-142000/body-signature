@@ -8,6 +8,7 @@
     "about": "من نحن",
     "services": "الخدمات",
     "contact": "تواصل معنا",
+    "account": "حسابي",
     "menu": "القائمة",
     "allServices": "عرض كل الخدمات"
   },
@@ -256,6 +257,106 @@
     "email": "hello@bodysignature.com",
     "hoursTitle": "ساعات العمل",
     "hours": "الإثنين–الجمعة: 9:00–18:00، السبت: 10:00–14:00"
+  },
+  "auth": {
+    "orDivider": "أو",
+    "googleCta": "المتابعة باستخدام جوجل",
+    "register": {
+      "eyebrow": "إنشاء حساب",
+      "title": "انضم إلى Body Signature",
+      "subtitle": "احفظ بياناتك، وتابع طلباتك، واحجز مواعيدك بسرعة أكبر.",
+      "name": "الاسم الكامل",
+      "namePlaceholder": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "8 أحرف على الأقل",
+      "submit": "إنشاء حساب",
+      "sending": "جارٍ إنشاء الحساب...",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "signIn": "تسجيل الدخول",
+      "success": "تحقق من بريدك الإلكتروني للحصول على رمز التفعيل.",
+      "errors": {
+        "nameRequired": "يرجى إدخال اسمك.",
+        "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح.",
+        "passwordTooShort": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+        "submitFailed": "تعذّر إنشاء حسابك. ربما يكون هذا البريد الإلكتروني مسجلاً بالفعل."
+      }
+    },
+    "verifyEmail": {
+      "eyebrow": "خطوة أخيرة",
+      "title": "تفعيل بريدك الإلكتروني",
+      "subtitle": "أدخل الرمز المكوّن من 6 أرقام الذي أرسلناه إلى {email}.",
+      "code": "رمز التفعيل",
+      "codePlaceholder": "123456",
+      "submit": "تفعيل",
+      "sending": "جارٍ التفعيل...",
+      "errors": {
+        "codeInvalid": "يرجى إدخال الرمز المكوّن من 6 أرقام.",
+        "submitFailed": "هذا الرمز غير صحيح أو منتهي الصلاحية."
+      }
+    },
+    "login": {
+      "eyebrow": "أهلاً بعودتك",
+      "title": "تسجيل الدخول",
+      "subtitle": "سجّل الدخول لمتابعة طلباتك وحجوزاتك.",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "password": "كلمة المرور",
+      "passwordPlaceholder": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "sending": "جارٍ تسجيل الدخول...",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "signUp": "أنشئ حسابًا",
+      "errors": {
+        "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح.",
+        "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة."
+      }
+    },
+    "forgotPassword": {
+      "eyebrow": "استرجاع كلمة المرور",
+      "title": "نسيت كلمة المرور؟",
+      "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رمز إعادة التعيين.",
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "you@example.com",
+      "submit": "إرسال رمز إعادة التعيين",
+      "sending": "جارٍ الإرسال...",
+      "success": "إذا كان هذا البريد الإلكتروني مسجلاً، فقد تم إرسال رمز إليه.",
+      "backToLogin": "العودة لتسجيل الدخول"
+    },
+    "resetPassword": {
+      "eyebrow": "استرجاع كلمة المرور",
+      "title": "اختر كلمة مرور جديدة",
+      "subtitle": "أدخل الرمز الذي أرسلناه إلى {email} وكلمة المرور الجديدة.",
+      "code": "رمز إعادة التعيين",
+      "codePlaceholder": "123456",
+      "newPassword": "كلمة المرور الجديدة",
+      "newPasswordPlaceholder": "8 أحرف على الأقل",
+      "submit": "تحديث كلمة المرور",
+      "sending": "جارٍ التحديث...",
+      "success": "تم تحديث كلمة المرور. يمكنك الآن تسجيل الدخول.",
+      "errors": {
+        "codeInvalid": "يرجى إدخال الرمز المكوّن من 6 أرقام.",
+        "passwordTooShort": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+        "submitFailed": "هذا الرمز غير صحيح أو منتهي الصلاحية."
+      }
+    },
+    "account": {
+      "title": "حسابك",
+      "signedInAs": "تم تسجيل الدخول باسم",
+      "signOut": "تسجيل الخروج",
+      "notSignedIn": "أنت غير مسجّل الدخول.",
+      "signInCta": "تسجيل الدخول",
+      "ordersTitle": "طلباتك",
+      "noOrders": "لا توجد طلبات بعد.",
+      "bookingsTitle": "حجوزاتك",
+      "noBookings": "لا توجد حجوزات بعد.",
+      "orderNumber": "الطلب",
+      "status": "الحالة",
+      "total": "الإجمالي",
+      "requested": "تاريخ الطلب"
+    }
   },
   "footer": {
     "tagline": "الصحة والجمال والتوازن — بتوقيع شخصي خاص بك.",

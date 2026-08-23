@@ -101,6 +101,12 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
+          <Link
+            href="/account"
+            className="hidden text-base font-medium text-muted-foreground transition-colors hover:text-foreground md:block"
+          >
+            {t("account")}
+          </Link>
           <LanguageSwitcher className="hidden md:flex" />
 
           <Sheet open={open} onOpenChange={setOpen}>
@@ -224,6 +230,18 @@ export function Header() {
                     }
                   >
                     {t("contact")}
+                  </SheetClose>
+
+                  <SheetClose
+                    nativeButton={false}
+                    render={
+                      <Link
+                        href="/account"
+                        className="text-lg font-medium text-foreground transition-colors hover:text-primary"
+                      />
+                    }
+                  >
+                    {t("account")}
                   </SheetClose>
                 </nav>
 
