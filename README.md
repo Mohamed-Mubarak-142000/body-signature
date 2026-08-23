@@ -7,9 +7,11 @@ orders, booking, CMS, and contact-form handling. Consumed by the marketing site
 Full product spec: `BACKEND_PRD.md` in the `zefaaf-body-signature` repo (§5 has the ERD
 this schema implements).
 
-**Status: scaffold.** The data model, auth foundation, and a handful of simple
-resource routes are real and working. Most business-logic routes are not built
-yet — see [Planned API surface](#planned-api-surface) below.
+**Status:** the data model, auth foundation, and CRUD for catalog/CMS/staff/
+orders/bookings are real and working end-to-end against a live Supabase
+Postgres instance. What's still missing is customer-facing account creation
+(register/OTP/login) and checkout/booking submission — see
+[Planned API surface](#planned-api-surface) below.
 
 ## Stack
 
@@ -68,27 +70,35 @@ authenticate it.
 
 ## Planned API surface
 
-Everything below is scoped in `BACKEND_PRD.md` but not yet implemented — routes
-don't exist yet, this is a roadmap, not a list of stubs:
+Not built yet — customer-facing account creation and the flows that depend
+on a logged-in customer:
 
-| Area | Endpoints | PRD section |
-|---|---|---|
-| Auth | `POST /api/auth/register`, `POST /api/auth/verify-otp`, `POST /api/auth/forgot-password`, `POST /api/auth/reset-password` | §4.1 |
-| Products | `GET/POST /api/products`, `GET/PATCH/DELETE /api/products/[id]`, variant + image sub-resources | §4.6 |
-| Cart | `GET /api/cart`, `POST /api/cart/items`, `PATCH/DELETE /api/cart/items/[id]` | §4.7 |
-| Wishlist | `GET /api/wishlist`, `POST/DELETE /api/wishlist/items/[productId]` | §4.7 |
-| Orders | `GET /api/orders`, `POST /api/orders` (from cart), `PATCH /api/orders/[id]/status` (staff) | §4.8 |
-| Bookings | `GET/POST /api/bookings`, `PATCH /api/bookings/[id]/status` (staff) | §4.5 |
-| Pages/CMS | `GET/PATCH /api/pages/[slug]` | §4.3 |
-| Team | `GET/POST/DELETE /api/staff` (admin-only) | §4.2 |
+| Area | Endpoints | PRD section | Blocks |
+|---|---|---|---|
+| Auth | `POST /api/auth/register`, `POST /api/auth/verify-otp`, `POST /api/auth/forgot-password`, `POST /api/auth/reset-password` | §4.1 | — |
+| Cart | `GET /api/cart`, `POST /api/cart/items`, `PATCH/DELETE /api/cart/items/[id]` | §4.7 | Auth |
+| Wishlist | `GET /api/wishlist`, `POST/DELETE /api/wishlist/items/[productId]` | §4.7 | Auth |
+| Order creation | `POST /api/orders` (from cart, computes total/order number) | §4.8 | Auth, Cart |
+| Booking creation | `POST /api/bookings` | §4.5 | Auth |
+| Email sending | Wire `lib/mail.ts` into contact/order-status/booking-status | §4.9 | `RESEND_API_KEY` |
+
+Once Auth exists, `Order`/`Booking` rows can actually be created by
+customers — the dashboard's Orders/Bookings pages already have real
+list + status-transition UI waiting for that data.
 
 ## What's already real
 
-- `prisma/schema.prisma` — all 25 entities from the ERD
-- `GET/POST /api/categories`, `GET/PATCH/DELETE /api/categories/[id]`
-- `GET/POST /api/services`
-- `POST /api/contact` (honeypot spam guard; email sending still TODO), `GET /api/contact` (staff)
+- `prisma/schema.prisma` — all 25 entities from the ERD, migrated onto Supabase
+- Categories: `GET/POST /api/categories`, `GET/PATCH/DELETE /api/categories/[id]`
+- Products: `GET/POST /api/products`, `GET/PATCH/DELETE /api/products/[id]` (nested translations/images/variants)
+- Services: `GET/POST /api/services`, `GET/PATCH/DELETE /api/services/[id]`
+- Pages/CMS: `GET/POST /api/pages`, `GET/PATCH/DELETE /api/pages/[slug]` (per-locale upsert)
+- Orders: `GET /api/orders`, `GET/PATCH /api/orders/[id]` (staff status transitions + history)
+- Bookings: `GET /api/bookings`, `PATCH /api/bookings/[id]` (staff approve/reject/reschedule)
+- Team: `GET/POST /api/staff`, `DELETE /api/staff/[id]` (admin-only)
+- Contact: `POST /api/contact` (honeypot spam guard; email sending still TODO), `GET /api/contact` (staff)
 - `POST /api/staff-login` — returns a bearer token (`lib/staff-token.ts`), not a cookie
 - `lib/auth.ts` + `app/api/auth/[...nextauth]/route.ts` — Credentials + Google wired,
   Google account linking still TODO
-- `emails/` — shared layout + OTP, order-status, booking-status, contact-ack templates
+- `emails/` — shared layout + OTP, order-status, booking-status, contact-ack templates (not yet sent anywhere)
+- `prisma/seed.ts` — creates a default admin (`npm run db:seed`)
