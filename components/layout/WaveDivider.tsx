@@ -5,11 +5,14 @@ interface WaveDividerProps {
   flip?: boolean;
 }
 
-export function WaveDivider({ color = "primary", flip = false }: WaveDividerProps) {
+export function WaveDivider({
+  color = "primary",
+  flip = false,
+}: WaveDividerProps) {
   return (
     <div
       className={cn(
-        "block leading-none",
+        "relative -mt-12 block leading-none md:-mt-18",
         color === "primary" ? "text-primary" : "text-secondary/40",
         flip && "-scale-x-100",
       )}

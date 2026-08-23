@@ -131,22 +131,32 @@
     "subtitle": "Neem contact op met vragen, of om te ontdekken welke dienst bij u past.",
     "form": {
       "name": "Volledige naam",
+      "namePlaceholder": "Jane Doe",
       "email": "E-mailadres",
+      "emailPlaceholder": "u@voorbeeld.nl",
       "phone": "Telefoonnummer",
+      "phonePlaceholder": "+31 6 1234 5678",
       "message": "Bericht",
       "messagePlaceholder": "Vertel ons kort waar u naar op zoek bent...",
       "submit": "Bericht versturen",
-      "note": "Dit formulier is uitsluitend voor vragen; wij verwerken geen boekingen of betalingen online."
+      "note": "Dit formulier is uitsluitend voor vragen; wij verwerken geen boekingen of betalingen online.",
+      "errors": {
+        "nameRequired": "Vul uw naam in.",
+        "emailRequired": "Vul uw e-mailadres in.",
+        "emailInvalid": "Vul een geldig e-mailadres in.",
+        "phoneInvalid": "Vul een geldig telefoonnummer in.",
+        "messageRequired": "Vul een bericht in."
+      }
     },
     "infoTitle": "Contactgegevens",
     "addressTitle": "Adres",
-    "address": "[Bedrijfsadres]",
+    "address": "Wellnesslaan 123, 1e verdieping, Amsterdam",
     "phoneTitle": "Telefoon",
-    "phoneValue": "[Telefoonnummer]",
+    "phoneValue": "+31 20 123 4567",
     "emailTitle": "E-mail",
-    "email": "[E-mailadres]",
+    "email": "hello@bodysignature.com",
     "hoursTitle": "Openingstijden",
-    "hours": "[Openingstijden]"
+    "hours": "Ma–vr: 9:00–18:00, za: 10:00–14:00"
   },
   "footer": {
     "tagline": "Gezondheid, schoonheid en balans — met een persoonlijke signatuur.",

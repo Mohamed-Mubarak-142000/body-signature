@@ -131,22 +131,32 @@
     "subtitle": "Reach out with any questions, or to learn which service is right for you.",
     "form": {
       "name": "Full name",
+      "namePlaceholder": "Jane Doe",
       "email": "Email address",
+      "emailPlaceholder": "you@example.com",
       "phone": "Phone number",
+      "phonePlaceholder": "+31 6 1234 5678",
       "message": "Message",
       "messagePlaceholder": "Tell us a little about what you're looking for...",
       "submit": "Send message",
-      "note": "This form is for enquiries only; we do not process bookings or payments online."
+      "note": "This form is for enquiries only; we do not process bookings or payments online.",
+      "errors": {
+        "nameRequired": "Please enter your name.",
+        "emailRequired": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "phoneInvalid": "Please enter a valid phone number.",
+        "messageRequired": "Please enter a message."
+      }
     },
     "infoTitle": "Contact details",
     "addressTitle": "Address",
-    "address": "[Business Address]",
+    "address": "123 Wellness Avenue, Suite 4, Amsterdam",
     "phoneTitle": "Phone",
-    "phoneValue": "[Phone Number]",
+    "phoneValue": "+31 20 123 4567",
     "emailTitle": "Email",
-    "email": "[Email Address]",
+    "email": "hello@bodysignature.com",
     "hoursTitle": "Business hours",
-    "hours": "[Business Hours]"
+    "hours": "Mon–Fri: 9:00–18:00, Sat: 10:00–14:00"
   },
   "footer": {
     "tagline": "Health, beauty, and balance — with a personal signature.",
