@@ -236,13 +236,15 @@
       "message": "Message",
       "messagePlaceholder": "Tell us a little about what you're looking for...",
       "submit": "Send message",
+      "sending": "Sending…",
       "note": "This form is for enquiries only; we do not process bookings or payments online.",
       "errors": {
         "nameRequired": "Please enter your name.",
         "emailRequired": "Please enter your email address.",
         "emailInvalid": "Please enter a valid email address.",
         "phoneInvalid": "Please enter a valid phone number.",
-        "messageRequired": "Please enter a message."
+        "messageRequired": "Please enter a message.",
+        "submitFailed": "Something went wrong sending your message. Please try again."
       }
     },
     "infoTitle": "Contact details",

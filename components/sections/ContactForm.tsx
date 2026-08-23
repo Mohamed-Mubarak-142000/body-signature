@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 
@@ -13,7 +13,10 @@ type FormErrors = Partial<Record<"name" | "email" | "phone" | "message", string>
 
 export function ContactForm() {
   const t = useTranslations("contact.form");
+  const locale = useLocale();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
   const schema = z.object({
@@ -32,7 +35,7 @@ export function ContactForm() {
     message: z.string().trim().min(1, t("errors.messageRequired")),
   });
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
@@ -54,7 +57,22 @@ export function ContactForm() {
     }
 
     setErrors({});
-    setSubmitted(true);
+    setSubmitError(false);
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...result.data, locale }),
+      });
+      if (!res.ok) throw new Error("submit failed");
+      setSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -141,8 +159,14 @@ export function ContactForm() {
         )}
       </div>
 
-      <Button type="submit" size="lg" className="w-full sm:w-auto">
-        {t("submit")}
+      {submitError && (
+        <p role="alert" className="text-sm text-destructive">
+          {t("errors.submitFailed")}
+        </p>
+      )}
+
+      <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={submitting}>
+        {submitting ? t("sending") : t("submit")}
       </Button>
 
       <p className="text-xs text-muted-foreground">{t("note")}</p>

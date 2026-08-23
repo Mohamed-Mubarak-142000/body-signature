@@ -236,13 +236,15 @@
       "message": "Bericht",
       "messagePlaceholder": "Vertel ons kort waar u naar op zoek bent...",
       "submit": "Bericht versturen",
+      "sending": "Verzenden…",
       "note": "Dit formulier is uitsluitend voor vragen; wij verwerken geen boekingen of betalingen online.",
       "errors": {
         "nameRequired": "Vul uw naam in.",
         "emailRequired": "Vul uw e-mailadres in.",
         "emailInvalid": "Vul een geldig e-mailadres in.",
         "phoneInvalid": "Vul een geldig telefoonnummer in.",
-        "messageRequired": "Vul een bericht in."
+        "messageRequired": "Vul een bericht in.",
+        "submitFailed": "Er is iets misgegaan bij het verzenden. Probeer het opnieuw."
       }
     },
     "infoTitle": "Contactgegevens",
