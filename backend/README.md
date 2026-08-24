@@ -2,9 +2,9 @@
 
 The API layer for the Body Signature platform: accounts, catalog, cart/wishlist,
 orders, booking, CMS, and contact-form handling. Consumed by the marketing site
-(`zefaaf-body-signature`) and the [dashboard](../zefaaf-body-signature-dashboard) app.
+(this monorepo's root) and the [dashboard](../dashboard) app.
 
-Full product spec: `BACKEND_PRD.md` in the `zefaaf-body-signature` repo (§5 has the ERD
+Full product spec: `../BACKEND_PRD.md` at this monorepo's root (§5 has the ERD
 this schema implements).
 
 **Status:** everything in the PRD is implemented and verified end-to-end against

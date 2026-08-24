@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // backend/ and dashboard/ are separate Next.js apps with their own
+    // eslint config and lint script — never lint them from the root.
+    "backend/**",
+    "dashboard/**",
   ]),
 ]);
 

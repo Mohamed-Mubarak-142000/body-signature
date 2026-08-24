@@ -2,11 +2,11 @@
 
 The staff admin panel: Admin and Assistant sign in here to manage products,
 categories, orders, bookings, content, and contact messages. See
-`BACKEND_PRD.md` (in the `zefaaf-body-signature` repo) §4.2 for the role split.
+`../BACKEND_PRD.md` (at this monorepo's root) §4.2 for the role split.
 
 **Status:** every module is real — full CRUD for Categories/Products/Services/
 Content, status-transition UI for Orders/Bookings, and Team management —
-wired to the live [backend](../zefaaf-body-signature-backend). Orders and
+wired to the live [backend](../backend). Orders and
 Bookings tables will stay empty until the backend's customer-facing
 register/checkout/booking-creation flows exist (see that repo's README);
 the staff side (list + approve/reject/ship, etc.) is ready for that data now.
